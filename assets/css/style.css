@@ -1,0 +1,777 @@
+/* ==========================================================================
+   1. СБРОС СТИЛЕЙ И БАЗОВЫЕ НАСТРОЙКИ
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* Плавная прокрутка до контактов */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #121212; /* Фирменный глубокий темный фон */
+    color: #e0e0e0;
+}
+
+body {
+    line-height: 1.6;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+span {
+    color: #f1c40f; /* Яркий акцентный цвет (электрика/золото) */
+}
+
+/* ==========================================================================
+   2. КНОПКИ
+   ========================================================================== */
+.btn {
+    display: inline-block;
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-main {
+    background-color: #f1c40f;
+    color: #121212;
+    box-shadow: 0 4px 15px rgba(241, 196, 15, 0.3);
+}
+
+.btn-main:hover {
+    background-color: #f39c12;
+    transform: translateY(-2px);
+}
+
+.btn-card {
+    background-color: #2c2c2c;
+    color: #fff;
+    width: 100%;
+    border: 1px solid #444;
+    padding: 10px;
+    font-size: 14px;
+    
+    /* ЭТА СТРОЧКА ИДЕАЛЬНО ВЫРАВНЯЕТ ВСЕ КНОПКИ ПО НИЖНЕМУ КРАЮ */
+    margin-top: auto; 
+}
+
+
+.btn-card:hover {
+    background-color: #3d3d3d;
+    border-color: #f1c40f;
+}
+
+/* ==========================================================================
+   3. ШАПКА САЙТА (Header)
+   ========================================================================== */
+.header {
+    background-color: #1a1a1a;
+    border-bottom: 1px solid #2d2d2d;
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+}
+
+.header-contacts {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+}
+
+.phone-link {
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.phone-link:hover {
+    color: #f1c40f;
+}
+
+.work-time {
+    font-size: 12px;
+    color: #888;
+}
+
+/* ==========================================================================
+   4. ГЛАВНЫЙ БАННЕР (Hero Section)
+   ========================================================================== */
+.hero {
+    padding: 60px 0;
+    background: linear-gradient(145deg, #1a1a1a 0%, #121212 100%);
+}
+
+.hero-container {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.hero-content {
+    flex: 1;
+}
+
+.hero-content h1 {
+    font-size: 42px;
+    line-height: 1.2;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.hero-subtitle {
+    font-size: 18px;
+    color: #b3b3b3;
+    margin-bottom: 30px;
+}
+
+.hero-advantages {
+    margin-bottom: 35px;
+}
+
+.adv-item {
+    margin-bottom: 12px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.adv-item span {
+    font-weight: bold;
+}
+
+.hero-image {
+    flex: 1;
+    text-align: center;
+}
+
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border: 1px solid #333;
+}
+
+/* ==========================================================================
+   5. БЛОК С 4 КАТЕГОРИЯМИ УСЛУГ (Services)
+   ========================================================================== */
+.services-section {
+    padding: 80px 0;
+    background-color: #161616;
+}
+
+.section-title {
+    font-size: 32px;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.min-order {
+    text-align: center;
+    color: #f1c40f;
+    font-weight: bold;
+    margin-bottom: 40px;
+    font-size: 16px;
+}
+
+
+.service-card {
+    background-color: #1e1e1e;
+    border: 1px solid #2d2d2d;
+    border-radius: 12px;
+    padding: 25px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    
+    /* Оставляем вертикальный flex-контейнер */
+    display: flex;
+    flex-direction: column;
+}
+
+
+.service-card:hover {
+    transform: translateY(-5px);
+    border-color: #444;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.card-icon {
+    font-size: 30px;
+    background-color: #2a2a2a;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+}
+
+.service-card h3 {
+    font-size: 20px;
+    color: #fff;
+    margin-bottom: 0; /* Сбрасываем лишние отступы */
+}
+
+
+
+.card-desc {
+    color: #a0a0a0;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+
+
+
+/* Начальное скрытое состояние для плавной анимации */
+.price-list-hidden {
+    display: block;          /* Меняем на block, чтобы работала анимация */
+    max-height: 0;           /* Высота изначально равна нулю */
+    opacity: 0;              /* Блок полностью прозрачный */
+    overflow: hidden;        /* Прячем текст, который не влезает в нулевую высоту */
+    transition: max-height 0.4s ease-out, opacity 0.3s ease-out, margin-top 0.4s ease-out; /* Время анимации */
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 1px solid transparent;
+}
+
+/* Активное состояние — когда прайс раскрыт */
+.price-list-hidden.active {
+    max-height: 500px;       /* Задаем заведомо большую высоту, до которой блок плавно вырастет */
+    opacity: 1;              /* Блок становится видимым */
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #333; /* Появляется разделительная линия */
+}
+
+
+.price-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    padding: 8px 0;
+    border-bottom: 1px dashed #2d2d2d;
+}
+
+.price-item:last-child {
+    border-bottom: none;
+}
+
+.price-item span {
+    color: #ccc;
+}
+
+.price-item b {
+    color: #fff;
+    white-space: nowrap;
+}
+
+/* ==========================================================================
+   6. ПОДВАЛ И КОНТАКТЫ (Footer)
+   ========================================================================== */
+.contacts-section {
+    background-color: #1a1a1a;
+    padding: 60px 0 30px 0;
+    border-top: 1px solid #2d2d2d;
+    text-align: center;
+}
+
+.contacts-section h2 {
+    font-size: 30px;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.contacts-subtitle {
+    color: #aaa;
+    font-size: 16px;
+    margin-bottom: 35px;
+}
+
+.main-phone-box {
+    margin-bottom: 30px;
+}
+
+.btn-phone {
+    display: inline-block;
+    background-color: #27ae60; /* Фирменный зеленый для звонка */
+    color: #fff;
+    padding: 16px 32px;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 50px;
+    box-shadow: 0 4px 20px rgba(39, 174, 96, 0.3);
+    transition: all 0.3s ease;
+}
+
+.btn-phone:hover {
+    background-color: #219653;
+    transform: scale(1.03);
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.soc-btn {
+    padding: 12px 24px;
+    border-radius: 6px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    transition: opacity 0.2s ease;
+}
+
+.soc-btn:hover {
+    opacity: 0.9;
+}
+
+.viber { background-color: #7b519d; }
+.telegram { background-color: #0088cc; }
+.instagram { background-color: #e1306c; }
+
+.footer-bottom {
+    border-top: 1px solid #2d2d2d;
+    padding-top: 20px;
+    font-size: 12px;
+    color: #666;
+}
+
+/* ==========================================================================
+   7. МЕДИА-ЗАПРОСЫ (АДАПТИВНОСТЬ ПОД МОБИЛЬНЫЕ)
+   ========================================================================== */
+
+/* Планшеты и телефоны (Экран меньше 992px) */
+@media (max-width: 992px) {
+    .hero-container {
+        flex-direction: column-reverse; /* На мобильном фото будет НАД текстом или под ним */
+        text-align: center;
+        gap: 30px;
+    }
+    
+    .hero-content h1 {
+        font-size: 32px;
+    }
+    
+    .adv-item {
+        justify-content: center; /* Центрируем галочки преимуществ */
+    }
+}
+
+/* Смартфоны (Экран меньше 576px) */
+@media (max-width: 576px) {
+    .header-container {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    
+    .header-contacts {
+        text-align: center;
+    }
+    
+    .hero {
+        padding: 40px 0;
+    }
+
+    .hero-content h1 {
+        font-size: 26px;
+    }
+    
+    .hero-subtitle {
+        font-size: 15px;
+    }
+    
+    .section-title {
+        font-size: 26px;
+    }
+    
+    .btn-phone {
+        font-size: 16px;
+        padding: 12px 24px;
+        width: 100%; /* Кнопка звонка растягивается во всю ширину экрана */
+    }
+    
+    .social-links {
+        flex-direction: column;
+        width: 100%;
+        padding: 0 10px;
+    }
+    
+    .soc-btn {
+        width: 100%; /* Кнопки соцсетей встают друг под друга на весь экран */
+        text-align: center;
+    }
+}
+
+
+
+/* Переопределяем сетку с учетом выравнивания по верху, как делали ранее */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+    align-items: start; 
+}
+
+/* ==========================================================================
+   ЦВЕТОВОЕ РАЗДЕЛЕНИЕ КАРТОЧЕК
+   ========================================================================== */
+
+/* --- 1. ЭЛЕКТРИКА (Янтарно-желтый) --- */
+.card-electric .card-icon {
+    background-color: rgba(241, 196, 15, 0.1);
+    color: #f1c40f;
+    border: 1px solid rgba(241, 196, 15, 0.2);
+}
+.card-electric:hover {
+    border-color: #f1c40f;
+    box-shadow: 0 5px 20px rgba(241, 196, 15, 0.05);
+}
+.card-electric .btn-card:hover {
+    border-color: #f1c40f;
+    color: #f1c40f;
+}
+
+/* --- 2. САНТЕХНИКА (Неоново-синий / Голубой) --- */
+.card-plumbing .card-icon {
+    background-color: rgba(52, 152, 219, 0.1);
+    color: #3498db;
+    border: 1px solid rgba(52, 152, 219, 0.2);
+}
+.card-plumbing:hover {
+    border-color: #3498db;
+    box-shadow: 0 5px 20px rgba(52, 152, 219, 0.05);
+}
+.card-plumbing .btn-card:hover {
+    border-color: #3498db;
+    color: #3498db;
+}
+
+/* --- 3. СБОРКА МЕБЕЛИ (Древесный оранжевый) --- */
+.card-furniture .card-icon {
+    background-color: rgba(230, 126, 34, 0.1);
+    color: #e67e22;
+    border: 1px solid rgba(230, 126, 34, 0.2);
+}
+.card-furniture:hover {
+    border-color: #e67e22;
+    box-shadow: 0 5px 20px rgba(230, 126, 34, 0.05);
+}
+.card-furniture .btn-card:hover {
+    border-color: #e67e22;
+    color: #e67e22;
+}
+
+/* --- 4. МЕЛКИЙ РЕМОНТ (Холодный бирюзовый / Мятный) --- */
+.card-handyman .card-icon {
+    background-color: rgba(26, 188, 156, 0.1);
+    color: #1abc9c;
+    border: 1px solid rgba(26, 188, 156, 0.2);
+}
+.card-handyman:hover {
+    border-color: #1abc9c;
+    box-shadow: 0 5px 20px rgba(26, 188, 156, 0.05);
+}
+.card-handyman .btn-card:hover {
+    border-color: #1abc9c;
+    color: #1abc9c;
+}
+
+
+
+
+/* ==========================================================================
+   ЦВЕТНЫЕ МАРКЕРЫ ДЛЯ ПРАЙС-ЛИСТОВ
+   ========================================================================== */
+
+/* Базовые настройки для всех маркеров */
+.price-item span::before {
+    content: "•";                 /* Задаем аккуратную круглую точку */
+    display: inline-block;
+    margin-right: 8px;            /* Отступ от точки до текста услуги */
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 1;
+    vertical-align: middle;
+}
+
+/* Красим точку в Электрике в желтый */
+.card-electric .price-item span::before {
+    color: #f1c40f;
+}
+
+/* Красим точку в Сантехнике в синий */
+.card-plumbing .price-item span::before {
+    color: #3498db;
+}
+
+/* Красим точку в Сборке мебели в оранжевый */
+.card-furniture .price-item span::before {
+    color: #e67e22;
+}
+
+/* Красим точку в Мелком ремонте в бирюзовый */
+.card-handyman .price-item span::before {
+    color: #1abc9c;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   ИНТЕРАКТИВНЫЙ КАЛЬКУЛЯТОР КУХНИ (CSS)
+   ========================================================================== */
+/* Изначально скрываем калькулятор для плавной анимации */
+.calculator-section {
+    display: block;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    background-color: #121212;
+    border-top: 1px solid transparent;
+    transition: max-height 0.5s ease-out, opacity 0.4s ease-out, padding 0.5s ease-out;
+    padding: 0; /* Убираем внутренние отступы, пока закрыт */
+}
+
+/* Класс, который JS включит при нажатии на кнопку */
+.calculator-section.active {
+    max-height: 1200px; /* Позволяем блоку раскрыться */
+    opacity: 1;
+    border-top: 1px solid #2d2d2d;
+    padding: 60px 0; /* Возвращаем красивые отступы */
+}
+
+
+.calc-title {
+    font-size: 28px;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.calc-subtitle {
+    text-align: center;
+    color: #888;
+    margin-bottom: 40px;
+    font-size: 15px;
+}
+
+.calc-wrapper {
+    display: flex;
+    gap: 40px;
+    background-color: #161616;
+    border: 1px solid #2d2d2d;
+    border-radius: 16px;
+    padding: 35px;
+}
+
+.calc-inputs {
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.calc-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.calc-group label {
+    font-size: 15px;
+    color: #ccc;
+    font-weight: bold;
+}
+
+/* Радио-кнопки выбора стен */
+.radio-group {
+    display: flex;
+    gap: 15px;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    flex: 1;
+    transition: border-color 0.2s;
+}
+
+.radio-label input {
+    accent-color: #f1c40f; /* Желтый цвет для переключателя */
+}
+
+.radio-label:hover {
+    border-color: #f1c40f;
+}
+
+/* Кастомизация ползунков */
+.range-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.range-header span {
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #2a2a2a;
+    padding: 4px 10px;
+    border-radius: 6px;
+}
+
+.calc-group input[type="range"] {
+    width: 100%;
+    accent-color: #f1c40f;
+    cursor: pointer;
+    height: 6px;
+    background: #333;
+    border-radius: 5px;
+}
+
+/* Правый блок результатов */
+.calc-result {
+    flex: 0.8;
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+.calc-result h3 {
+    font-size: 18px;
+    color: #fff;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+}
+
+.result-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #aaa;
+    margin-bottom: 12px;
+}
+
+.result-item strong {
+    color: #fff;
+}
+
+.result-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 15px;
+    border-top: 2px dashed #333;
+    margin-bottom: 20px;
+}
+
+.result-total span {
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.result-total strong {
+    font-size: 24px;
+    color: #f1c40f;
+}
+
+.btn-calc-send {
+    background-color: #0088cc; /* Синий цвет телеграма */
+    color: #fff;
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-calc-send:hover {
+    background-color: #0077b3;
+}
+
+.calc-note {
+    font-size: 11px;
+    color: #666;
+    margin-top: 10px;
+    text-align: center;
+    line-height: 1.3;
+}
+
+/* Адаптивность для калькулятора */
+@media (max-width: 768px) {
+    .calc-wrapper {
+        flex-direction: column;
+        padding: 20px;
+    }
+    .radio-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .calc-result {
+        margin-top: 15px;
+    }
+}
