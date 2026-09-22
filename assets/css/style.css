@@ -1,5 +1,5 @@
 /* ==========================================================================
-   1. СБРОС СТИЛЕЙ И БАЗОВЫЕ НАСТРОЙКИ
+   1. СБРОС СТИЛЕЙ И БАЗОВЫЕ НАСТРОЙКИ (СВЕТЛАЯ ТЕМА)
    ========================================================================== */
 * {
     margin: 0;
@@ -8,10 +8,10 @@
 }
 
 html {
-    scroll-behavior: smooth; /* Плавная прокрутка до контактов */
+    scroll-behavior: smooth;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background-color: #121212; /* Фирменный глубокий темный фон */
-    color: #e0e0e0;
+    background-color: #f8fafc;
+    color: #334155;
 }
 
 body {
@@ -26,7 +26,7 @@ body {
 }
 
 span {
-    color: #f1c40f; /* Яркий акцентный цвет (электрика/золото) */
+    color: #0066cc;
 }
 
 /* ==========================================================================
@@ -35,7 +35,7 @@ span {
 .btn {
     display: inline-block;
     padding: 14px 28px;
-    border-radius: 8px;
+    border-radius: 50px;
     font-size: 16px;
     font-weight: bold;
     text-decoration: none;
@@ -46,40 +46,38 @@ span {
 }
 
 .btn-main {
-    background-color: #f1c40f;
-    color: #121212;
-    box-shadow: 0 4px 15px rgba(241, 196, 15, 0.3);
+    background-color: #0066cc;
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(0, 102, 204, 0.2);
 }
 
 .btn-main:hover {
-    background-color: #f39c12;
+    background-color: #0052a3;
     transform: translateY(-2px);
 }
 
 .btn-card {
-    background-color: #2c2c2c;
-    color: #fff;
+    background-color: #ffffff;
+    color: #0066cc;
     width: 100%;
-    border: 1px solid #444;
+    border: 1px solid #cbd5e1;
     padding: 10px;
     font-size: 14px;
-    
-    /* ЭТА СТРОЧКА ИДЕАЛЬНО ВЫРАВНЯЕТ ВСЕ КНОПКИ ПО НИЖНЕМУ КРАЮ */
-    margin-top: auto; 
+    border-radius: 8px;
+    margin-top: auto;
 }
 
-
 .btn-card:hover {
-    background-color: #3d3d3d;
-    border-color: #f1c40f;
+    background-color: #f0f7ff;
+    border-color: #0066cc;
 }
 
 /* ==========================================================================
    3. ШАПКА САЙТА (Header)
    ========================================================================== */
 .header {
-    background-color: #1a1a1a;
-    border-bottom: 1px solid #2d2d2d;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
     padding: 15px 0;
     position: sticky;
     top: 0;
@@ -95,6 +93,7 @@ span {
 .logo {
     font-size: 22px;
     font-weight: 800;
+    color: #0f172a;
     letter-spacing: 0.5px;
 }
 
@@ -105,121 +104,280 @@ span {
 }
 
 .phone-link {
-    color: #fff;
+    color: #0f172a;
     font-size: 18px;
     font-weight: bold;
     text-decoration: none;
 }
 
 .phone-link:hover {
-    color: #f1c40f;
+    color: #0066cc;
 }
 
 .work-time {
     font-size: 12px;
-    color: #888;
+    color: #64748b;
 }
 
 /* ==========================================================================
-   4. ГЛАВНЫЙ БАННЕР (Hero Section)
+   4. ГЛАВНЫЙ БАННЕР-СЛАЙДЕР (ЖЕСТКАЯ АБСОЛЮТНАЯ СИНЯЯ ЛИНИЯ И КРУПНЫЙ ШРИФТ)
    ========================================================================== */
-.hero {
-    padding: 60px 0;
-    background: linear-gradient(145deg, #1a1a1a 0%, #121212 100%);
+.hero-slider-section {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #e0f2fe 0%, #f8fafc 100%); 
 }
 
-.hero-container {
+
+
+/* Контейнер для картинок мастера — фон теперь просвечивает сквозь PNG! */
+.hero-images-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none; /* Чтобы картинки не мешали кликать по кнопкам */
+}
+
+/* 🖼️ Новая логика под PNG: фото центрируется и не растягивается во всю ширину */
+.master-photo-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* 🌟 ИЗМЕНЕНИЯ ДЛЯ ЦЕНТРИРОВАНИЯ PNG: */
+    background-size: contain;     /* Картинка аккуратно вписывается по высоте (600px) */
+    background-position: center;   /* Встает строго по центру экрана, как ты нарисовал маркером */
+    background-repeat: no-repeat;
+    
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1.2s ease-in-out, visibility 1.2s ease-in-out;
+}
+
+/* Когда слайд с фото становится активным, силуэт плавно проявляется */
+.master-photo-slide.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+
+.hero-slider-container {
+    position: relative;
+    height: 100%;
     display: flex;
     align-items: center;
-    gap: 40px;
+    z-index: 2;
 }
 
-.hero-content {
-    flex: 1;
+/* Белая карточка с острыми правыми углами под линию */
+.hero-card {
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.98); 
+    max-width: 580px;
+    width: 100%;
+    height: 480px; /* Увеличили высоту, чтобы тексту было просторно */
+    border-radius: 24px 0px 0px 24px; 
+    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 40px;
+    /* Резервируем место справа строго под толщину синей линии, чтобы она не перекрывала текст */
+    padding-right: 52px; 
 }
 
-.hero-content h1 {
-    font-size: 42px;
+/* 🟦 ЖЕСТКАЯ АБСОЛЮТНАЯ СИНЯЯ ЛИНИЯ СПРАВА — СТОИТ НАМЕРТВО И НЕ ИСЧЕЗАЕТ */
+.hero-card-line {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 12px; /* Толщина в 2 раза больше исходной */
+    height: 100%;
+    background-color: #0066cc;
+    z-index: 10;
+}
+
+.hero-card-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Окно обрезки анимации выезда */
+.text-slider-window {
+    width: 100%;
+    overflow: hidden;
+    flex-grow: 1;
+}
+
+.text-slider-track {
+    display: flex;
+    width: 400%;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); 
+}
+
+.text-slide {
+    width: 25%;
+    height: 100%;
+    flex-shrink: 0;
+    padding-right: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.slide-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: bold;
+    color: #0066cc;
+    background-color: #f0f7ff;
+    padding: 6px 14px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    align-self: flex-start;
+}
+
+/* Возвращены полноценные крупные и жирные шрифты заголовков */
+.text-slide h2 {
+    font-size: 38px;
     line-height: 1.2;
-    color: #fff;
-    margin-bottom: 20px;
+    color: #0f172a; /* Красивый глубокий темный цвет для основной фразы */
+    margin-bottom: 15px;
+    font-weight: 800;
 }
 
-.hero-subtitle {
-    font-size: 18px;
-    color: #b3b3b3;
-    margin-bottom: 30px;
+/* Настройка для выделенного слова внутри заголовка */
+.text-slide h2 span {
+    color: #0066cc; /* Наш фирменный ярко-синий цвет! */
 }
 
-.hero-advantages {
-    margin-bottom: 35px;
-}
 
-.adv-item {
-    margin-bottom: 12px;
+.text-slide p {
     font-size: 16px;
+    color: #475569;
+    line-height: 1.5;
+}
+
+.slider-controls-row {
     display: flex;
     align-items: center;
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.slider-navigation {
+    display: flex;
     gap: 10px;
 }
 
-.adv-item span {
+.nav-arrow {
+    width: 46px;
+    height: 46px;
+    background-color: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    border-radius: 50%;
+    color: #0066cc;
+    font-size: 18px;
     font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
 }
 
-.hero-image {
-    flex: 1;
-    text-align: center;
+.nav-arrow:hover {
+    background-color: #0066cc;
+    color: #ffffff;
+    border-color: #0066cc;
+}
+/* Индикаторы-точки под баннером */
+.slider-dots-container {
+    position: absolute;
+    bottom: 25px;
+    left: 0;
+    width: 100%;
+    z-index: 10;
 }
 
-.hero-image img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    border: 1px solid #333;
+.slider-dots {
+    display: flex;
+    gap: 8px;
+    padding-left: 40px;
+}
+
+.dot {
+    width: 24px;
+    height: 6px;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    width: 40px;
+    background-color: #ffffff;
 }
 
 /* ==========================================================================
-   5. БЛОК С 4 КАТЕГОРИЯМИ УСЛУГ (Services)
+   5. БЛОК УСЛУГ (Плитка цен)
    ========================================================================== */
 .services-section {
     padding: 80px 0;
-    background-color: #161616;
+    background-color: #ffffff;
 }
 
 .section-title {
     font-size: 32px;
-    color: #fff;
+    color: #0f172a;
     text-align: center;
     margin-bottom: 10px;
 }
 
 .min-order {
     text-align: center;
-    color: #f1c40f;
+    color: #0066cc;
     font-weight: bold;
     margin-bottom: 40px;
     font-size: 16px;
 }
 
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+    align-items: start;
+}
 
 .service-card {
-    background-color: #1e1e1e;
-    border: 1px solid #2d2d2d;
-    border-radius: 12px;
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
     padding: 25px;
-    transition: transform 0.3s ease, border-color 0.3s ease;
-    
-    /* Оставляем вертикальный flex-контейнер */
+    transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
 }
 
-
 .service-card:hover {
     transform: translateY(-5px);
-    border-color: #444;
+    background-color: #ffffff;
+    box-shadow: 0 15px 30px rgba(0, 102, 204, 0.06);
 }
 
 .card-header {
@@ -230,61 +388,54 @@ span {
 }
 
 .card-icon {
-    font-size: 30px;
-    background-color: #2a2a2a;
+    font-size: 26px;
+    background-color: #ffffff;
     width: 50px;
     height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 8px;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
 }
 
 .service-card h3 {
     font-size: 20px;
-    color: #fff;
-    margin-bottom: 0; /* Сбрасываем лишние отступы */
+    color: #0f172a;
 }
-
-
 
 .card-desc {
-    color: #a0a0a0;
+    color: #64748b;
     font-size: 14px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
-
-
-
-/* Начальное скрытое состояние для плавной анимации */
+/* Раскрывыющиеся прайсы */
 .price-list-hidden {
-    display: block;          /* Меняем на block, чтобы работала анимация */
-    max-height: 0;           /* Высота изначально равна нулю */
-    opacity: 0;              /* Блок полностью прозрачный */
-    overflow: hidden;        /* Прячем текст, который не влезает в нулевую высоту */
-    transition: max-height 0.4s ease-out, opacity 0.3s ease-out, margin-top 0.4s ease-out; /* Время анимации */
+    display: block;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, opacity 0.3s ease-out, margin-top 0.4s ease-out;
     margin-top: 0;
     padding-top: 0;
     border-top: 1px solid transparent;
 }
 
-/* Активное состояние — когда прайс раскрыт */
 .price-list-hidden.active {
-    max-height: 500px;       /* Задаем заведомо большую высоту, до которой блок плавно вырастет */
-    opacity: 1;              /* Блок становится видимым */
+    max-height: 600px;
+    opacity: 1;
     margin-top: 20px;
     padding-top: 15px;
-    border-top: 1px solid #333; /* Появляется разделительная линия */
+    border-top: 1px solid #e2e8f0;
 }
-
 
 .price-item {
     display: flex;
     justify-content: space-between;
     font-size: 14px;
-    padding: 8px 0;
-    border-bottom: 1px dashed #2d2d2d;
+    padding: 9px 0;
+    border-bottom: 1px dashed #e2e8f0;
 }
 
 .price-item:last-child {
@@ -292,476 +443,563 @@ span {
 }
 
 .price-item span {
-    color: #ccc;
+    color: #334155;
 }
 
 .price-item b {
-    color: #fff;
+    color: #0f172a;
     white-space: nowrap;
 }
 
-/* ==========================================================================
-   6. ПОДВАЛ И КОНТАКТЫ (Footer)
-   ========================================================================== */
-.contacts-section {
-    background-color: #1a1a1a;
-    padding: 60px 0 30px 0;
-    border-top: 1px solid #2d2d2d;
-    text-align: center;
-}
-
-.contacts-section h2 {
-    font-size: 30px;
-    color: #fff;
-    margin-bottom: 15px;
-}
-
-.contacts-subtitle {
-    color: #aaa;
-    font-size: 16px;
-    margin-bottom: 35px;
-}
-
-.main-phone-box {
-    margin-bottom: 30px;
-}
-
-.btn-phone {
-    display: inline-block;
-    background-color: #27ae60; /* Фирменный зеленый для звонка */
-    color: #fff;
-    padding: 16px 32px;
-    font-size: 20px;
-    font-weight: bold;
-    text-decoration: none;
-    border-radius: 50px;
-    box-shadow: 0 4px 20px rgba(39, 174, 96, 0.3);
-    transition: all 0.3s ease;
-}
-
-.btn-phone:hover {
-    background-color: #219653;
-    transform: scale(1.03);
-}
-
-.social-links {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin-bottom: 40px;
-}
-
-.soc-btn {
-    padding: 12px 24px;
-    border-radius: 6px;
-    color: #fff;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: bold;
-    transition: opacity 0.2s ease;
-}
-
-.soc-btn:hover {
-    opacity: 0.9;
-}
-
-.viber { background-color: #7b519d; }
-.telegram { background-color: #0088cc; }
-.instagram { background-color: #e1306c; }
-
-.footer-bottom {
-    border-top: 1px solid #2d2d2d;
-    padding-top: 20px;
-    font-size: 12px;
-    color: #666;
-}
-
-/* ==========================================================================
-   7. МЕДИА-ЗАПРОСЫ (АДАПТИВНОСТЬ ПОД МОБИЛЬНЫЕ)
-   ========================================================================== */
-
-/* Планшеты и телефоны (Экран меньше 992px) */
-@media (max-width: 992px) {
-    .hero-container {
-        flex-direction: column-reverse; /* На мобильном фото будет НАД текстом или под ним */
-        text-align: center;
-        gap: 30px;
-    }
-    
-    .hero-content h1 {
-        font-size: 32px;
-    }
-    
-    .adv-item {
-        justify-content: center; /* Центрируем галочки преимуществ */
-    }
-}
-
-/* Смартфоны (Экран меньше 576px) */
-@media (max-width: 576px) {
-    .header-container {
-        flex-direction: column;
-        gap: 10px;
-        text-align: center;
-    }
-    
-    .header-contacts {
-        text-align: center;
-    }
-    
-    .hero {
-        padding: 40px 0;
-    }
-
-    .hero-content h1 {
-        font-size: 26px;
-    }
-    
-    .hero-subtitle {
-        font-size: 15px;
-    }
-    
-    .section-title {
-        font-size: 26px;
-    }
-    
-    .btn-phone {
-        font-size: 16px;
-        padding: 12px 24px;
-        width: 100%; /* Кнопка звонка растягивается во всю ширину экрана */
-    }
-    
-    .social-links {
-        flex-direction: column;
-        width: 100%;
-        padding: 0 10px;
-    }
-    
-    .soc-btn {
-        width: 100%; /* Кнопки соцсетей встают друг под друга на весь экран */
-        text-align: center;
-    }
-}
-
-
-
-/* Переопределяем сетку с учетом выравнивания по верху, как делали ранее */
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 25px;
-    align-items: start; 
-}
-
-/* ==========================================================================
-   ЦВЕТОВОЕ РАЗДЕЛЕНИЕ КАРТОЧЕК
-   ========================================================================== */
-
-/* --- 1. ЭЛЕКТРИКА (Янтарно-желтый) --- */
-.card-electric .card-icon {
-    background-color: rgba(241, 196, 15, 0.1);
-    color: #f1c40f;
-    border: 1px solid rgba(241, 196, 15, 0.2);
-}
-.card-electric:hover {
-    border-color: #f1c40f;
-    box-shadow: 0 5px 20px rgba(241, 196, 15, 0.05);
-}
-.card-electric .btn-card:hover {
-    border-color: #f1c40f;
-    color: #f1c40f;
-}
-
-/* --- 2. САНТЕХНИКА (Неоново-синий / Голубой) --- */
-.card-plumbing .card-icon {
-    background-color: rgba(52, 152, 219, 0.1);
-    color: #3498db;
-    border: 1px solid rgba(52, 152, 219, 0.2);
-}
-.card-plumbing:hover {
-    border-color: #3498db;
-    box-shadow: 0 5px 20px rgba(52, 152, 219, 0.05);
-}
-.card-plumbing .btn-card:hover {
-    border-color: #3498db;
-    color: #3498db;
-}
-
-/* --- 3. СБОРКА МЕБЕЛИ (Древесный оранжевый) --- */
-.card-furniture .card-icon {
-    background-color: rgba(230, 126, 34, 0.1);
-    color: #e67e22;
-    border: 1px solid rgba(230, 126, 34, 0.2);
-}
-.card-furniture:hover {
-    border-color: #e67e22;
-    box-shadow: 0 5px 20px rgba(230, 126, 34, 0.05);
-}
-.card-furniture .btn-card:hover {
-    border-color: #e67e22;
-    color: #e67e22;
-}
-
-/* --- 4. МЕЛКИЙ РЕМОНТ (Холодный бирюзовый / Мятный) --- */
+.card-electric .card-icon,
+.card-plumbing .card-icon,
+.card-furniture .card-icon,
 .card-handyman .card-icon {
-    background-color: rgba(26, 188, 156, 0.1);
-    color: #1abc9c;
-    border: 1px solid rgba(26, 188, 156, 0.2);
-}
-.card-handyman:hover {
-    border-color: #1abc9c;
-    box-shadow: 0 5px 20px rgba(26, 188, 156, 0.05);
-}
-.card-handyman .btn-card:hover {
-    border-color: #1abc9c;
-    color: #1abc9c;
+    background-color: #f0f7ff;
+    color: #0066cc;
+    border-color: #bfdbfe;
 }
 
+.card-electric:hover { border-color: #0066cc; }
+.card-plumbing:hover { border-color: #38bdf8; }
+.card-furniture:hover { border-color: #0284c7; }
+.card-handyman:hover { border-color: #0ea5e9; }
 
-
-
-/* ==========================================================================
-   ЦВЕТНЫЕ МАРКЕРЫ ДЛЯ ПРАЙС-ЛИСТОВ
-   ========================================================================== */
-
-/* Базовые настройки для всех маркеров */
 .price-item span::before {
-    content: "•";                 /* Задаем аккуратную круглую точку */
+    content: "•";
     display: inline-block;
-    margin-right: 8px;            /* Отступ от точки до текста услуги */
+    margin-right: 8px;
     font-weight: bold;
     font-size: 16px;
-    line-height: 1;
-    vertical-align: middle;
+    color: #0066cc;
 }
-
-/* Красим точку в Электрике в желтый */
-.card-electric .price-item span::before {
-    color: #f1c40f;
-}
-
-/* Красим точку в Сантехнике в синий */
-.card-plumbing .price-item span::before {
-    color: #3498db;
-}
-
-/* Красим точку в Сборке мебели в оранжевый */
-.card-furniture .price-item span::before {
-    color: #e67e22;
-}
-
-/* Красим точку в Мелком ремонте в бирюзовый */
-.card-handyman .price-item span::before {
-    color: #1abc9c;
-}
-
-
-
-
-
-
-
-
-
-
-
 
 /* ==========================================================================
-   ИНТЕРАКТИВНЫЙ КАЛЬКУЛЯТОР КУХНИ (CSS)
+   6. УНИВЕРСАЛЬНЫЙ КАЛЬКУЛЯТОР РОЗЕТОК (ИСПРАВЛЕННЫЙ И ВЫДЕЛЕННЫЙ)
    ========================================================================== */
-/* Изначально скрываем калькулятор для плавной анимации */
+.calc-preview-row {
+    display: flex;
+    gap: 30px;
+    align-items: stretch;
+    margin: 40px 0 45px 0;
+    width: 100%;
+}
+
+.calc-device-vector {
+    flex: 0.65;
+    background-color: #ffffff;
+    border: 3px solid #0066cc;
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    box-shadow: 0 10px 30px rgba(0, 102, 204, 0.04);
+}
+
+.vector-screen {
+    background-color: #cfd8dc; 
+    border: 2px solid #94a3b8;
+    border-radius: 8px;
+    height: 54px;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; 
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.vector-screen-digits {
+    font-family: "Courier New", Courier, monospace; 
+    font-size: 24px;
+    font-weight: bold;
+    color: #1e293b;
+    letter-spacing: 1px;
+}
+
+.vector-main-body-layout {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+}
+
+.vector-buttons-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 8px;
+}
+
+.vector-right-wing {
+    flex: 1.1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.v-btn {
+    height: 32px; 
+    background-color: #e2e8f0; 
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 800;
+    color: #334155;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    box-shadow: 0 2px 0 #cbd5e1;
+}
+
+.v-btn-digit {
+    background-color: #ffffff;
+    border-color: #e2e8f0;
+    font-size: 14px; 
+    color: #0f172a;
+    box-shadow: 0 2px 0 #e2e8f0;
+}
+
+.v-btn-orange {
+    background-color: #ff9800;
+    border-color: #f57c00;
+    color: #ffffff;
+    box-shadow: 0 2px 0 #f57c00;
+}
+
+.v-btn-blue {
+    background-color: #e0f2fe;
+    border-color: #bae6fd;
+    color: #0066cc;
+    box-shadow: 0 2px 0 #bae6fd;
+}
+
+.v-btn-percent {
+    width: 100%;
+}
+
+.integrated-trigger-btn {
+    flex: 1;
+    width: 100%;
+    background-color: #e0f2fe; 
+    border: 2px solid #bae6fd;
+    border-radius: 12px;
+    color: #0066cc; 
+    font-size: 14px; 
+    font-weight: 800;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 15px 10px;
+    cursor: pointer;
+    box-shadow: 0 3px 0 #bae6fd, 0 5px 15px rgba(0, 102, 204, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.integrated-trigger-btn:hover {
+    background-color: #bae6fd;
+    border-color: #7dd3fc;
+}
+
+.calc-photo-vector {
+    flex: 1.35;
+    border: 3px solid #0066cc;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 102, 204, 0.04);
+    height: 290px;
+}
+
+.calc-photo-vector img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Выдвижная интерактивная панель калькулятора */
 .calculator-section {
     display: block;
     max-height: 0;
     opacity: 0;
     overflow: hidden;
-    background-color: #121212;
-    border-top: 1px solid transparent;
-    transition: max-height 0.5s ease-out, opacity 0.4s ease-out, padding 0.5s ease-out;
-    padding: 0; /* Убираем внутренние отступы, пока закрыт */
+    transition: max-height 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease-out;
+    padding: 0;
+    width: 100%;
 }
 
-/* Класс, который JS включит при нажатии на кнопку */
 .calculator-section.active {
-    max-height: 1200px; /* Позволяем блоку раскрыться */
+    max-height: 1200px;
     opacity: 1;
-    border-top: 1px solid #2d2d2d;
-    padding: 60px 0; /* Возвращаем красивые отступы */
+    padding: 20px 0 40px 0;
 }
 
-
-.calc-title {
-    font-size: 28px;
-    color: #fff;
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-.calc-subtitle {
-    text-align: center;
-    color: #888;
-    margin-bottom: 40px;
-    font-size: 15px;
-}
-
-.calc-wrapper {
+.calc-interactive-box {
     display: flex;
     gap: 40px;
-    background-color: #161616;
-    border: 1px solid #2d2d2d;
-    border-radius: 16px;
+    background-color: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 24px;
     padding: 35px;
+    box-shadow: 0 15px 40px rgba(15, 23, 42, 0.05);
+    width: 100%;
+    align-items: stretch;
 }
 
-.calc-inputs {
+.calc-inputs-side {
     flex: 1.2;
     display: flex;
     flex-direction: column;
     gap: 25px;
 }
 
-.calc-group {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.interactive-title { 
+    font-size: 22px; 
+    color: #0f172a; 
+    font-weight: 800; 
+    margin-bottom: 5px; 
 }
 
-.calc-group label {
-    font-size: 15px;
-    color: #ccc;
-    font-weight: bold;
+.calc-group label { 
+    font-size: 15px; 
+    color: #334155; 
+    font-weight: 700; 
+    margin-bottom: 8px; 
+    display: block;
 }
 
-/* Радио-кнопки выбора стен */
-.radio-group {
-    display: flex;
-    gap: 15px;
-}
+.radio-group { display: flex; gap: 12px; }
 
 .radio-label {
     display: flex;
     align-items: center;
     gap: 8px;
-    background-color: #1e1e1e;
-    border: 1px solid #333;
-    padding: 10px 15px;
-    border-radius: 8px;
+    background-color: #f8fafc;
+    border: 1px solid #cbd5e1;
+    padding: 14px 16px;
+    border-radius: 12px;
     cursor: pointer;
     flex: 1;
-    transition: border-color 0.2s;
+    color: #0f172a;
+    font-weight: 700;
+    font-size: 14px;
+    transition: all 0.2s;
 }
 
-.radio-label input {
-    accent-color: #f1c40f; /* Желтый цвет для переключателя */
+/* 🎯 КОСЯК 1: Возвращаем стандартное отображение точки радиокнопки для Бетона */
+.radio-label input { 
+    accent-color: #0066cc !important; 
+    cursor: pointer; 
+    transform: scale(1.2); 
+    display: inline-block !important;
 }
+.radio-label:hover { border-color: #0066cc; background-color: #f0f7ff; }
 
-.radio-label:hover {
-    border-color: #f1c40f;
-}
-
-/* Кастомизация ползунков */
-.range-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
+.range-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
 .range-header span {
-    font-size: 16px;
-    font-weight: bold;
-    background-color: #2a2a2a;
-    padding: 4px 10px;
-    border-radius: 6px;
+    font-size: 14px; font-weight: bold; background-color: #f1f5f9;
+    color: #0066cc; padding: 5px 12px; border-radius: 8px; border: 1px solid #cbd5e1;
 }
 
-.calc-group input[type="range"] {
-    width: 100%;
-    accent-color: #f1c40f;
-    cursor: pointer;
-    height: 6px;
-    background: #333;
-    border-radius: 5px;
+/* 🎯 КОСЯК 2: ЖЕСТКО ПЕРЕКРАШИВАЕМ ДОРОЖКИ ПОЛЗУНКОВ В СВЕТЛО-ГОЛУБОЙ ЦВЕТ */
+.calc-group input[type="range"] { 
+    width: 100%; 
+    accent-color: #0066cc; /* Синий кружок */
+    cursor: pointer; 
+    height: 8px; 
+    background-color: #e0f2fe !important; /* Светло-голубая заполненная полоска */
+    border: 1px solid #bae6fd;
+    border-radius: 10px;
 }
 
-/* Правый блок результатов */
-.calc-result {
-    flex: 0.8;
-    background-color: #1e1e1e;
-    border: 1px solid #333;
-    border-radius: 12px;
-    padding: 25px;
+/* 📟 ПРАВАЯ СТОРОНА: СМЕТА РАСТЯНУТАЯ НА ВСЮ ШИРИНУ ПЛАШКИ */
+.calc-results-side {
+    flex: 1.4; 
+    background-color: #f0f7ff; 
+    border: 2px solid #bfdbfe;
+    border-radius: 20px;
+    padding: 30px;
     display: flex;
     flex-direction: column;
+    box-shadow: inset 0 2px 8px rgba(0, 102, 204, 0.02);
 }
 
-.calc-result h3 {
-    font-size: 18px;
-    color: #fff;
-    margin-bottom: 20px;
-    border-bottom: 1px solid #333;
-    padding-bottom: 10px;
+.results-title {
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #0066cc; 
+    margin-bottom: 25px;
+    border-bottom: 2px dashed #bfdbfe; 
+    padding-bottom: 12px;
+    font-weight: 800;
+}
+
+.calc-result-rows-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
 }
 
 .result-item {
     display: flex;
     justify-content: space-between;
-    font-size: 14px;
-    color: #aaa;
-    margin-bottom: 12px;
+    align-items: center;
+    background-color: #ffffff; 
+    padding: 14px 20px;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.01);
 }
 
-.result-item strong {
-    color: #fff;
+.item-name {
+    font-size: 16px; 
+    font-weight: 700;
+    color: #1e293b;
 }
 
-.result-total {
+.item-price {
+    font-size: 17px; 
+    color: #0066cc; 
+    font-weight: 800;
+}
+
+/* 🎯 КОСЯК 3: МОЩНЫЙ, ЖИРНЫЙ, СИНКОВЫЙ БЛОК ДЛЯ СУММЫ К ОПЛАТЕ «ИТОГО» */
+.result-total-block {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: auto;
-    padding-top: 15px;
-    border-top: 2px dashed #333;
+    margin-top: auto; /* Прижимает блок кнопок и цен к низу */
+    background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%) !important; /* Синий сочный градиент */
+    padding: 18px 24px !important;
+    border-radius: 14px !important;
+    width: 100% !important;
+    box-shadow: 0 5px 15px rgba(0, 102, 204, 0.2) !important;
     margin-bottom: 20px;
+    display: flex !important; /* Гарантируем видимость */
 }
 
-.result-total span {
-    font-size: 16px;
-    font-weight: bold;
-    color: #fff;
+.total-label {
+    font-size: 18px !important;
+    font-weight: 800 !important;
+    color: #ffffff !important; /* Белые крупные буквы */
 }
 
-.result-total strong {
-    font-size: 24px;
-    color: #f1c40f;
+.total-price-value {
+    font-size: 32px !important; /* Огромный, убойный ценник */
+    color: #ffffff !important; /* Белый цвет суммы */
+    font-weight: 900 !important;
 }
 
 .btn-calc-send {
-    background-color: #0088cc; /* Синий цвет телеграма */
-    color: #fff;
+    background-color: #0088cc;
+    color: #ffffff;
     width: 100%;
-    padding: 12px;
-    font-size: 15px;
-    font-weight: bold;
-    border-radius: 8px;
+    padding: 15px;
+    font-size: 16px; 
+    font-weight: 800;
+    border-radius: 50px;
     border: none;
     cursor: pointer;
-    transition: background 0.2s;
+    box-shadow: 0 5px 15px rgba(0, 136, 206, 0.25);
+    transition: all 0.2s ease;
 }
 
 .btn-calc-send:hover {
     background-color: #0077b3;
+    transform: translateY(-1px);
 }
 
-.calc-note {
-    font-size: 11px;
-    color: #666;
-    margin-top: 10px;
+.calc-warning-note {
+    font-size: 12px;
+    color: #64748b;
+    margin-top: 15px;
     text-align: center;
-    line-height: 1.3;
+    line-height: 1.5;
+    width: 100%;
 }
 
-/* Адаптивность для калькулятора */
+@media (max-width: 992px) {
+    .calc-preview-row { flex-direction: column; gap: 20px; }
+    .calc-device-vector, .calc-photo-vector { width: 100%; flex: none; }
+    .calc-photo-vector { height: 260px; }
+    .calc-interactive-box { flex-direction: column; gap: 30px; padding: 25px 20px; }
+}
+
+@media (max-width: 768px) { .radio-group { flex-direction: column; gap: 8px; } }
+
+/* ==========================================================================
+   7. ПОДВАЛ И КОНТАКТЫ (Одинаковые кнопки связи)
+   ========================================================================== */
+.contacts-section {
+    background-color: #ffffff;
+    padding: 60px 0 40px 0;
+    border-top: 1px solid #e2e8f0;
+    text-align: center;
+}
+
+.contacts-section h2 {
+    font-size: 30px;
+    color: #0f172a;
+    margin-bottom: 15px;
+}
+
+.contacts-subtitle {
+    color: #475569;
+    font-size: 16px;
+    margin-bottom: 35px;
+}
+
+.footer-buttons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+.footer-buttons-container .soc-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 54px;
+    width: 230px;
+    padding: 0 15px;
+    border-radius: 50px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    border: none;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+}
+
+.footer-buttons-container .soc-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(15, 23, 42, 0.1);
+}
+
+.phone-btn { background-color: #27ae60; }
+.viber { background-color: #7b519d; }
+.telegram { background-color: #0088cc; }
+.instagram { background-color: #e1306c; }
+
+.footer-bottom {
+    border-top: 1px solid #e2e8f0;
+    padding-top: 20px;
+    font-size: 12px;
+    color: #94a3b8;
+}
+
+/* Калькулятор скрыт при старте */
+.calculator-section {
+    display: block;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out, opacity 0.4s ease-out, padding 0.5s ease-out;
+    padding: 0;
+}
+
+.calculator-section.active {
+    max-height: 1500px;
+    opacity: 1;
+    padding: 60px 0;
+}
+
+/* ==========================================================================
+   8. МЕДИА-ЗАПРОСЫ (АДАПТИВНОСТЬ)
+   ========================================================================== */
+@media (max-width: 992px) {
+    .hero-slider-section {
+        height: auto;
+    }
+
+    .hero-bg-image {
+        position: relative;
+        width: 100%;
+        height: 280px;
+        border-radius: 20px;
+        margin: 20px auto 0 auto;
+        max-width: calc(100% - 20px);
+    }
+
+    .hero-slider-container {
+        flex-direction: column;
+        padding: 20px 10px;
+        height: auto;
+    }
+
+    .hero-card {
+        max-width: 100%;
+        height: auto;
+        box-shadow: none;
+        background-color: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 20px;
+        padding: 30px 20px;
+        padding-right: 20px; /* Сбрасываем жесткий отступ на мобилке */
+    }
+
+    .hero-card-line {
+        width: 100%;
+        height: 6px;
+        top: auto;
+        bottom: 0;
+        border-radius: 0 0 20px 20px;
+    }
+
+    .text-slider-window {
+        height: auto;
+    }
+
+    .text-slide {
+        padding-right: 0;
+        text-align: center;
+    }
+
+    .text-slide h2 {
+        font-size: 26px;
+    }
+
+    .slider-controls-row {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .slider-controls-row .btn-main {
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .slider-dots-container {
+        position: relative;
+        bottom: 0;
+        margin-top: 20px;
+    }
+
+    .slider-dots {
+        justify-content: center;
+        padding-left: 0;
+    }
+
+    .dot {
+        background-color: #cbd5e1;
+    }
+
+    .dot.active {
+        background-color: #0066cc;
+    }
+}
+
 @media (max-width: 768px) {
     .calc-wrapper {
         flex-direction: column;
@@ -771,7 +1009,761 @@ span {
         flex-direction: column;
         gap: 10px;
     }
-    .calc-result {
-        margin-top: 15px;
+}
+
+@media (max-width: 576px) {
+    .header-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .header-contacts {
+        text-align: center;
+    }
+    .section-title {
+        font-size: 26px;
+    }
+    .footer-buttons-container {
+        flex-direction: column;
+    }
+    .footer-buttons-container .soc-btn {
+        width: 100%;
+        max-width: 340px;
     }
 }
+
+
+
+/* ==========================================================================
+   НОВЫЙ ТРЕНДОВЫЙ СТИЛЬ КАРТОЧЕК ПОД ФЛЭТ-ИЛЛЮСТРАЦИИ С СИНИМИ ПЯТНАМИ
+   ========================================================================== */
+
+/* Перестраиваем шапку карточки, чтобы картинка стояла сверху по центру, а не вбок */
+.service-card .card-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+/* Увеличиваем размер квадратной подложки под картинку иллюстрации */
+.service-card .card-icon {
+    width: 220px; /* 👈 Увеличили ширину (была 130px) */
+    height: 220px; /* 👈 Увеличили высоту (была 130px) */
+    background-color: #f8fafc; 
+    border: 1px solid #f1f5f9;
+    border-radius: 20px; /* Сделали скругления чуть мягче под крупный размер */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px; /* Добавили сочный внутренний отступ */
+    transition: transform 0.2s ease-in-out;
+    margin: 0 auto;
+}
+
+
+/* Интерактивный эффект: при наведении на карточку картинка мягко увеличивается */
+.service-card:hover .card-icon {
+    transform: scale(1.04);
+}
+
+/* Стили заголовка услуги внутри карточки */
+.service-card .card-header h3 {
+    font-size: 24px;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0;
+}
+
+/* Выравниваем текст описания по центру, чтобы всё смотрелось симметрично */
+.service-card .card-desc {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #475569;
+}
+
+
+
+/* ==========================================================================
+   📋 3.2 ЭФФЕКТ ЖИВОЙ КАПСУЛЫ: МОНОЛИТНОЕ ПЕРЕЛИВАНИЕ РАМКИ ПО СХЕМЕ
+   ========================================================================== */
+
+/* Жестко держим размер картинок 220px по твоему стандарту */
+.card-illustration {
+    width: 220px !important; 
+    height: 220px !important;
+    background-color: #f8fafc; 
+    border: 1px solid #f1f5f9;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    transition: transform 0.2s ease-in-out;
+    margin: 0 auto 20px auto;
+}
+
+.card-illustration img {
+    max-width: 100% !important;
+    max-height: 100% !important;
+    object-fit: contain !important;
+}
+
+/* Центровка текстов карточек */
+.service-card .card-header,
+.service-card .card-header-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
+    margin-bottom: 15px !important;
+}
+
+.service-card h3 {
+    font-size: 24px !important;
+    font-weight: 800 !important;
+    color: #0f172a !important;
+    text-align: center !important;
+    margin: 0 auto 10px auto !important;
+    display: block !important;
+    width: 100% !important;
+}
+
+.service-card .card-desc {
+    text-align: center !important;
+    margin-bottom: 25px !important;
+    font-size: 15px !important;
+    line-height: 1.5 !important;
+    color: #475569 !important;
+}
+
+/* 🌟 ГЛАВНАЯ ОБЩАЯ ПАНЕЛЬ ПРАЙСА: Скругляем все углы, синяя жирная рамка */
+.wide-price-panel {
+    display: none;
+    width: 100%;
+    background-color: #ffffff;
+    border: 3px solid #0066cc; /* Наш сочный синий контур */
+    border-radius: 24px; 
+    padding: 30px;
+    margin-top: 30px; /* Делаем аккуратный зазор для закрытого состояния */
+    margin-bottom: 40px;
+    box-shadow: 0 20px 40px rgba(0, 102, 204, 0.06);
+    position: relative;
+    z-index: 10;
+}
+
+.wide-price-panel.active {
+    display: block;
+    animation: slideDownFade 0.3s ease-out;
+}
+
+/* 🌟 ЭФФЕКТ ПЕРЕЛИВАНИЯ И ОБЪЕДИНЕНИЯ РАМОК В ОДИН СТИЛЬ */
+.service-card.panel-open {
+    border-color: #0066cc !important; /* Карточка красится в тот же синий цвет */
+    border-width: 3px !important; /* Толщина рамки совпадает с прайсом */
+    box-shadow: 0 10px 30px rgba(0, 102, 204, 0.08) !important;
+    position: relative;
+    z-index: 15;
+}
+
+/* Фоновый сдвиг общей панели при активации для склейки контуров */
+.wide-price-panel.active {
+    margin-top: 25px;
+}
+
+/* Кнопка на активной карточке горит синим */
+.service-card.panel-open .btn-card {
+    background-color: #0066cc;
+    color: #ffffff;
+    border-color: #0066cc;
+}
+
+/* Шапка выезжающего прайса */
+.price-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px dashed #bfdbfe; 
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+}
+
+#price-panel-title {
+    font-size: 20px;
+    font-weight: 800;
+    color: #0f172a;
+}
+
+.btn-close-panel {
+    background-color: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    color: #64748b;
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-close-panel:hover {
+    background-color: #ffeded;
+    color: #dc2626;
+    border-color: #fca5a5;
+}
+
+.price-content-block { display: none; }
+.price-content-block.active { display: block; }
+.wide-price-list { display: flex; flex-direction: column; gap: 12px; }
+
+/* Элементы прайса */
+.wide-price-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8fafc; 
+    padding: 12px 20px;
+    border-radius: 14px;
+    border: 1px solid #e2e8f0;
+    transition: all 0.2s ease;
+}
+
+.wide-price-item:hover {
+    background-color: #f0f7ff; 
+    border-color: #bfdbfe;
+}
+
+.price-item-left { display: flex; align-items: center; gap: 15px; }
+
+.price-item-thumb {
+    width: 44px;
+    height: 44px;
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    flex-shrink: 0;
+}
+
+.price-item-thumb img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.price-item-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.price-item-val {
+    font-size: 16px;
+    font-weight: 800;
+    color: #0066cc; 
+    white-space: nowrap;
+    background-color: #ffffff;
+    padding: 6px 12px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+@keyframes slideDownFade {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+
+/* ==========================================================================
+   🎯 КАРТИНКА ШУРУПОВЕРТА СПРАВА ОТ КАРТОЧЕК (ПРОСТАЯ И СТАТИЧНАЯ)
+   ========================================================================== */
+/* Обязательно проверяем, чтобы у родительского контейнера .services-section или .container была позиция relative */
+.services-section .container {
+    position: relative;
+}
+
+/* Позиционируем коробку с картинкой в пустое поле справа */
+.static-drill-box {
+    position: absolute;
+    right: -320px; /* 👈 Двигай влево-вправо: делай минус меньше (например -50px), чтобы прижать к карточкам, или больше (-150px), чтобы отодвинуть к краю */
+    top: 420px;    /* 👈 Двигай выше-ниже: увеличивай цифру, чтобы опустить, или уменьшай, чтобы поднять картинку */
+    width: 300px;  /* 👈 Твой масштаб: делай больше или меньше по вкусу */
+    height: auto;
+    z-index: 5;
+    pointer-events: none; /* Мышка будет проходить сквозь нее, ничего не зависнет */
+    user-select: none;
+}
+
+.static-drill-img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(-10px 12px 25px rgba(0, 0, 0, 0.06)); /* Легкая аккуратная тень для объема */
+}
+
+/* На мобильных телефонах и планшетах полностью скрываем, чтобы она не наползала на текст карточек */
+@media (max-width: 1400px) {
+    .static-drill-box {
+        display: none !important;
+    }
+}
+
+
+/* ==========================================================================
+   🔥 ИНТЕРАКТИВНАЯ АНИМАЦИЯ ШУРУПОВЕРТА (ДЫХАНИЕ + СВЕРЛЕНИЕ ПРИ НАВЕДЕНИИ)
+   ========================================================================== */
+
+/* Включаем pointer-events, чтобы мышка могла взаимодействовать с картинкой */
+.static-drill-box {
+    pointer-events: auto !important; 
+}
+
+.static-drill-img {
+    transform-origin: bottom center;
+    /* 🎯 ФАЗА 1: Плавное покачивание инструмента в руке по умолчанию (цикл 4 секунды) */
+    animation: smoothDrillBreathing 4s infinite ease-in-out;
+    transition: filter 0.3s ease;
+    cursor: pointer;
+}
+
+/* 🎯 ФАЗА 2: При наведении курсора запускается быстрая микро-вибрация сверления */
+.static-drill-box:hover .static-drill-img {
+    animation: interactiveDrillVibe 0.14s infinite linear;
+    filter: drop-shadow(-12px 18px 30px rgba(0, 102, 204, 0.18)); /* Добавляем легкий синий акцент при пуске */
+}
+
+/* Анимация плавного покачивания (дыхания) */
+@keyframes smoothDrillBreathing {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-6px) rotate(1.5deg); }
+}
+
+/* Анимация жесткой микро-вибрации (работает строго при ховере в пределах своих пикселей) */
+@keyframes interactiveDrillVibe {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(-0.5px, 0.5px) rotate(-0.3deg); }
+    50% { transform: translate(0.5px, -0.5px) rotate(0.3deg); }
+    75% { transform: translate(-0.5px, -0.5px) rotate(-0.2deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+
+/* ==========================================================================
+   💥 ИНТЕРАКТИВНЫЙ СКЛАДНОЙ МЕТР СЛЕВА (ФИКСАЦИЯ ТВОИХ КООРДИНАТ И ЭФФЕКТ ПРУЖИНЫ)
+   ========================================================================== */
+.static-meter-box {
+    position: absolute;
+    left: -220px !important;   /* 🎯 Твоя идеальная координата влево */
+    top: -30px !important;      /* 🎯 Твоя идеальная координата высоты */
+    width: 240px !important;   /* 🎯 Твой идеальный масштаб ширины */
+    height: auto;
+    z-index: 5;
+    pointer-events: auto !important; /* Включили мышку, чтобы ховер срабатывал! */
+    user-select: none;
+}
+
+.static-meter-img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(10px 12px 25px rgba(0, 0, 0, 0.06));
+    
+    /* Точка вращения: привязываем анимацию к верхнему краю, чтобы линейка качалась как подвешенная */
+    transform-origin: top center;
+    
+    /* ФАЗА 1: Мягкое живое покачивание инструмента в режиме ожидания (цикл 5 секунд) */
+    animation: smoothMeterSwing 5s infinite ease-in-out;
+    transition: filter 0.3s ease;
+    cursor: pointer;
+}
+
+/* ФАЗА 2: При наведении мышки запускается эффект пружинящего щелчка замера */
+.static-meter-box:hover .static-meter-img {
+    animation: interactiveMeterSnap 0.4s ease-in-out;
+    filter: drop-shadow(15px 18px 30px rgba(0, 102, 204, 0.12)); /* Мягкий синий контур при замере */
+}
+
+/* Анимация ленивого покачивания подвешенного складного метра */
+@keyframes smoothMeterSwing {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(2deg) translateY(-3px); }
+}
+
+/* Анимация "измерительного щелчка" (быстрый пружинящий отскок при наведении курсора) */
+@keyframes interactiveMeterSnap {
+    0% { transform: scale(1) rotate(0deg); }
+    30% { transform: scaleY(1.08) scaleX(0.95) translateY(5px); } /* Метр пружинит вниз и вытягивается */
+    60% { transform: scaleY(0.95) scaleX(1.03) translateY(-3px); } /* Отскакивает обратно */
+    80% { transform: scaleY(1.02) scaleX(0.98) translateY(1px); }  /* Мелкое затухание */
+    100% { transform: scale(1) rotate(0deg); }
+}
+
+/* На мобильных телефонах полностью убираем, чтобы не мешал контенту */
+@media (max-width: 1400px) {
+    .static-meter-box {
+        display: none !important;
+    }
+}
+
+/* ==========================================================================
+   💥 ЗЕРКАЛЬНЫЕ КЛЕЩИ GEDORE (ФИКСАЦИЯ ГУБОК СПРАВА И ВРАЩЕНИЕ РУКОЯТКИ СЛЕВА)
+   ========================================================================== */
+.static-pliers-box {
+    position: absolute;
+    left: -280px !important;   /* Твоя настроенная координата влево */
+    top: 800px !important;     /* Твоя настроенная координата высоты */
+    width: 360px !important;   /* Твой настроенный масштаб ширины */
+    height: auto;
+    z-index: 5;
+    pointer-events: auto !important; 
+    user-select: none;
+}
+
+.static-pliers-img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(10px 12px 25px rgba(0, 0, 0, 0.08));
+    
+    /* 🎯 ЗЕРКАЛЬНАЯ ФИКСАЦИЯ: Переносим точку вращения в верхний правый угол (на губки клещей),
+       чтобы сами пассатижи справа стояли на месте гайки, а рука слева крутила рукоятку */
+    transform-origin: top right;
+    
+    /* ФАЗА 1: Мягкое покачивание (дыхание) в режиме ожидания */
+    animation: smoothPliersBreath 4s infinite ease-in-out;
+    transition: filter 0.3s ease;
+    cursor: pointer;
+}
+
+/* ФАЗА 2: УЛЬТРА-ЗАМЕДЛЕННОЕ И РАЗМАШИСТОЕ ЗЕРКАЛЬНОЕ КРУЧЕНИЕ */
+.static-pliers-box:hover .static-pliers-img {
+    animation: interactivePliersRotateWorkMirrored 2.2s infinite ease-in-out !important;
+    filter: drop-shadow(12px 16px 30px rgba(0, 102, 204, 0.14));
+}
+
+/* Анимация ленивого покачивания */
+@keyframes smoothPliersBreath {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-3px) rotate(-0.5deg); }
+}
+
+/* 🔥 ИДЕАЛЬНОЕ ЗЕРКАЛЬНОЕ КРУЧЕНИЕ: Губки справа стоят как влитые, 
+   А левая часть с рукой мастера плавно и размашисто ходит по дуге на 25 градусов */
+@keyframes interactivePliersRotateWorkMirrored {
+    0% { transform: rotate(0deg); }
+    50% { transform: rotate(25deg); } /* 👈 Левая сторона с рукой уходит по сочной траектории, имитируя затяжку */
+    100% { transform: rotate(0deg); }
+}
+
+/* На мобильных телефонах полностью убираем */
+@media (max-width: 1400px) {
+    .static-pliers-box {
+        display: none !important;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   🧱 МОДНЫЙ ПЛИТОЧНЫЙ ПРАЙС-ЛИСТ С МАКСИМАЛЬНЫМ 3D-ВЫЛЕТОМ КАРТИНКИ
+   ========================================================================== */
+.price-grid-layout {
+    display: grid !important;
+    grid-template-columns: repeat(6, 1fr) !important;
+    gap: 20px !important;
+    width: 100% !important;
+    margin-top: 15px !important;
+}
+
+/* Общий стиль карточки-плитки */
+.price-tile-card {
+    grid-column: span 2 !important;
+    background-color: #f8fafc !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 18px !important;
+    padding: 25px 20px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    justify-content: space-between !important;
+    transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) !important; /* Упругая анимация вылета */
+}
+
+/* Верхний ряд */
+.price-tile-card.active-top-row {
+    grid-column: span 3 !important;
+    background-color: #ffffff !important;
+    border: 2px solid #e2e8f0 !important;
+}
+
+/* Эффект для всей карточки при наведении мышки */
+.price-tile-card:hover {
+    transform: translateY(-6px) !important; 
+    border-color: #bfdbfe !important;
+    box-shadow: 0 15px 30px rgba(0, 102, 204, 0.06) !important;
+    background-color: #ffffff !important;
+}
+
+/* Контейнер картинки-стикера */
+.tile-premium-bg-sticker {
+    width: 115px !important;
+    height: 115px !important;
+    min-width: 115px !important;
+    min-height: 115px !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    margin: 0 auto 15px auto !important;
+    display: block !important;
+    filter: drop-shadow(0 8px 16px rgba(0, 102, 204, 0.06)) !important;
+    
+    /* Добавляем плавность для изменения размера и положения самой картинки */
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) !important; 
+}
+
+/* 🎯 МАКСИМАЛЬНЫЙ СУПЕР-ВЫЛЕТ КАРТИНКИ: Увеличили масштаб до 1.65 + приподняли вверх */
+.price-tile-card:hover .tile-premium-bg-sticker {
+    transform: scale(1.65) translateY(-12px) !important; /* Наглый размашистый вылет вперед и вверх! */
+    filter: drop-shadow(0 20px 35px rgba(0, 102, 204, 0.22)) !important; /* Глубокая, сочная 3D-тень */
+}
+
+/* Пути к картинкам */
+.tile-img-socket { background-image: url('../images/thumb-socket.png') !important; }
+.tile-img-chandelier { background-image: url('../images/thumb-chandelier.png') !important; }
+.tile-img-diagnostic { background-image: url('../images/thumb-diagnostic.png') !important; }
+.tile-img-breaker { background-image: url('../images/thumb-breaker.png') !important; }
+.tile-img-hob { background-image: url('../images/thumb-hob.png') !important; }
+
+.tile-img-mixer { background-image: url('../images/thumb-mixer.png') !important; }
+.tile-img-siphon { background-image: url('../images/thumb-siphon.png') !important; }
+.tile-img-silicone { background-image: url('../images/thumb-silicone.png') !important; }
+.tile-img-clog { background-image: url('../images/thumb-clog.png') !important; }
+.tile-img-toilet { background-image: url('../images/thumb-toilet.png') !important; }
+.tile-img-washer { background-image: url('../images/thumb-washer.png') !important; }
+
+.tile-img-table { background-image: url('../images/thumb-table.png') !important; }
+.tile-img-dresser { background-image: url('../images/thumb-dresser.png') !important; }
+.tile-img-bed { background-image: url('../images/thumb-bed.png') !important; }
+.tile-img-wardrobe { background-image: url('../images/thumb-wardrobe.png') !important; }
+.tile-img-hinge { background-image: url('../images/thumb-hinge.png') !important; }
+.tile-img-disassemble { background-image: url('../images/thumb-disassemble.png') !important; }
+
+.tile-img-lock { background-image: url('../images/thumb-lock.png') !important; }
+.tile-img-tv { background-image: url('../images/thumb-tv.png') !important; }
+.tile-img-cornice { background-image: url('../images/thumb-cornice.png') !important; }
+.tile-img-mirror { background-image: url('../images/thumb-mirror.png') !important; }
+.tile-img-dryer { background-image: url('../images/thumb-dryer.png') !important; }
+.tile-img-plinth { background-image: url('../images/thumb-plinth.png') !important; }
+
+/* Описание услуги по центру */
+.tile-info h4 {
+    font-size: 17px !important;
+    font-weight: 800 !important;
+    color: #0f172a !important;
+    margin-bottom: 8px !important;
+    line-height: 1.3 !important;
+}
+
+.tile-info p {
+    font-size: 13.5px !important;
+    line-height: 1.45 !important;
+    color: #64748b !important;
+    margin-bottom: 20px !important;
+}
+
+/* Красивая жирная кнопка-ценник */
+.tile-price-tag {
+    font-size: 15px !important;
+    font-weight: 800 !important;
+    color: #0066cc !important;
+    background-color: #f0f7ff !important;
+    border: 1px solid #bfdbfe !important;
+    padding: 8px 24px !important;
+    border-radius: 50px !important;
+    white-space: nowrap !important;
+    width: 100% !important;
+    max-width: 140px !important;
+    text-align: center;
+}
+
+.price-tile-card:hover .tile-price-tag {
+    background-color: #0066cc !important;
+    color: #ffffff !important;
+    border-color: #0066cc !important;
+}
+
+/* Адаптивность для телефонов */
+@media (max-width: 900px) {
+    .price-grid-layout {
+        grid-template-columns: 1fr !important;
+    }
+    .price-tile-card, .price-tile-card.active-top-row {
+        grid-column: span 1 !important;
+    }
+}
+
+
+
+
+
+
+
+/* ==========================================================================
+   💥 ПАРЯЩИЕ НАКЛЕЙКИ-МЕССЕНДЖЕРЫ В ПОДВАЛЕ САЙТА (ВМЕСТО СТАРЫХ КНОПОК)
+   ========================================================================== */
+.footer-stickers-container {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 30px !important; /* Удобное расстояние между наклейками */
+    margin: 40px auto !important;
+    flex-wrap: wrap !important;
+    width: 100% !important;
+    max-width: 600px !important;
+}
+
+/* Общий стиль для ссылки-наклейки */
+.footer-sticker-btn {
+    display: block !important;
+    text-decoration: none !important;
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) !important; /* Упругий вылет */
+}
+
+/* Базовый размер самого стикера */
+.sticker-media {
+    width: 100px !important;  /* Идеальный квадратный размер в подвале */
+    height: 100px !important;
+    min-width: 100px !important;
+    min-height: 100px !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    display: block !important;
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.08)) !important; /* Легкая тень на старте */
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+/* 🎯 ИНТЕРАКТИВНЫЙ ХОВЕР: При наведении мышки наклейка мощно взлетает вверх и вперед! */
+.footer-sticker-btn:hover {
+    transform: scale(1.3) translateY(-12px) !important; /* Взлет на 30% и уход вверх */
+}
+
+.footer-sticker-btn:hover .sticker-media {
+    filter: drop-shadow(0 20px 35px rgba(0, 102, 204, 0.22)) !important; /* Глубокая 3D-тень */
+}
+
+/* 🎯 ПУТИ К ИМЕНАМ ФАЙЛОВ ТВОИХ НОВЫХ НАКЛЕЕК */
+.sticker-btn-phone { background-image: url('../images/sticker-phone.png') !important; }
+.sticker-btn-viber { background-image: url('../images/sticker-viber.png') !important; }
+.sticker-btn-telegram { background-image: url('../images/sticker-telegram.png') !important; }
+.sticker-btn-instagram { background-image: url('../images/sticker-instagram.png') !important; }
+
+/* Сброс старых классов кнопок, чтобы они не конфликтовали */
+.soc-btn, .phone-btn, .viber, .telegram, .instagram {
+    display: none-adjusted; /* Защита */
+}
+
+
+
+
+/* ==========================================================================
+   📐 КОНТРОЛЬ ОБЩЕЙ ШИРИНЫ, ВЫСОТЫ И МАСШТАБА РАМКИ
+   ========================================================================== */
+/* 1. Исправили опечатку в названии класса (теперь строго calc, а не calr!) */
+.calc-photo-vector-wrapper {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-end !important; /* Прижимаем рамку к нижнему краю вровень с Citizen */
+    height: 100% !important;
+    width: 100% !important;              
+    max-width: 660px !important;         /* 🎯 КОНТРОЛЬ ШИРИНЫ: Меняй эту цифру, чтобы сделать рамку уже или шире! */
+    align-items: center !important;
+    box-sizing: border-box !important;
+    margin: 0 auto !important;           /* Центрует суженную рамку в её колонке */
+}
+
+/* Заголовок строго по центру над рамкой */
+.calc-vector-outer-title {
+    font-size: 26px !important;
+    font-weight: 900 !important;
+    color: #0f172a !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    margin: 0 auto 25px auto !important; 
+    text-align: center !important;
+    display: block !important;
+    width: 100% !important;
+}
+
+/* СИНЯЯ РАМКА: Внутренние отступы */
+.calc-photo-vector {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 25px 20px !important;       /* 🎯 КОНТРОЛЬ ВЫСОТЫ: Уменьшай первое число (например, до 15px), чтобы рамка была более приплюснутой */
+    width: 100% !important;              
+    background: #ffffff !important;
+    border: 1px solid #0066cc !important; 
+    border-radius: 18px !important;
+    box-sizing: border-box !important;
+    margin-top: auto !important;
+}
+
+/* Картинка-стикер внутри рамки */
+.calc-vector-img {
+    width: 100% !important;
+    max-width: 340px !important;         /* 🎯 КОНТРОЛЬ МАСШТАБА НАКЛЕЕК: Уменьшай эту цифру, чтобы сама картинка розетки стала меньше, а вокруг появилось больше воздуха */
+    height: auto !important;
+    object-fit: contain !important;
+    display: block !important;
+    margin: 0 auto !important;
+    filter: drop-shadow(0 10px 25px rgba(0, 102, 204, 0.08)) !important;
+    transition: transform 0.3s ease !important;
+}
+
+/* Легкий интерактивный эффект при наведении */
+.calc-vector-img:hover {
+    transform: scale(1.04) !important;
+}
+
+/* Адаптивность для телефонов */
+@media (max-width: 900px) {
+    .calc-photo-vector-wrapper {
+        max-width: 100% !important;
+    }
+}
+
+
+
+
+

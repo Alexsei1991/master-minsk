@@ -4,252 +4,623 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Мастер на час в Минске | Услуги электрика, сантехника, сборка мебели</title>
-    <!-- Подключаем файл стилей (путь настроен под нашу структуру папок) -->
     <link rel="stylesheet" href="assets/css/style.css">
 
 </head>
 <body>
 
-    <!-- 1. ШАПКА САЙТА (Телефоны и быстрая связь) -->
+
+    <!-- 1. ШАПКА САЙТА -->
     <header class="header">
         <div class="container header-container">
-            <div class="logo">Мастер <span>[Алексей]</span></div>
+<!-- 🎯 ЛОГОТИП С ОБНУЛЕНИЕМ ВСЕХ ОТСТУПОВ И МАРЖИНОВ ПОД ЧИСТЫЙ КРУГ -->
+<div class="logo" style="display: flex; align-items: center; gap: 15px; margin: 0 !important; padding: 0 !important; border: none !important; box-shadow: none !important;">
+    
+    <!-- Сама картинка: выставили 78px чистого размера, убрали любые бордюры хедера -->
+    <img src="assets/images/logo.png" alt="House Master Минск" style="height: 78px !important; width: auto !important; object-fit: contain !important; margin: 0 !important; padding: 0 !important; border: none !important;">
+    
+    <!-- Твое имя, которое теперь не сжимается белым фоном -->
+    <div style="font-size: 24px; font-weight: 900; color: #0f172a; margin: 0 !important; padding: 0 !important;">
+        Мастер <span style="color: #0066cc;">[ Алексей ]</span>
+    </div>
+</div>
+
+
             <div class="header-contacts">
-                <!-- Ссылка на телефон кликабельна для мобильных -->
-                <a href="tel:+37529XXXXXXX" class="phone-link">+375 (33) 676-41-97</a>
+                <a href="tel:+375336764197" class="phone-link">+375 (33) 676-41-97</a>
                 <span class="work-time">Ежедневно: 8:00 - 21:00</span>
             </div>
         </div>
     </header>
 
-    <!-- 2. ГЛАВНЫЙ БАННЕР (Hero Section) -->
-    <section class="hero">
-        <div class="container hero-container">
-            <div class="hero-content">
-                <h1>Мастер на час в Минске.<br>Профессиональный ремонт без головной боли</h1>
-                <p class="hero-subtitle">Услуги дипломированного электрика, сантехника, сборка мебели и мелкий бытовой ремонт в Минске и пригороде.</p>
+    <!-- 2. ГЛАВНЫЙ БАННЕР-СЛАЙДЕР (Услуги мастера) -->
+    <section class="hero-slider-section">
+        
+        <!-- Фотографии под каждую услугу (PNG без фона) -->
+        <div class="hero-images-container">
+            <div class="master-photo-slide active" style="background-image: url('assets/images/master-electric.png');"></div>
+            <div class="master-photo-slide" style="background-image: url('assets/images/master-plumbing.png');"></div>
+            <div class="master-photo-slide" style="background-image: url('assets/images/master-furniture.png');"></div>
+            <div class="master-photo-slide" style="background-image: url('assets/images/master-handyman.png');"></div>
+        </div>
+        
+        <div class="container hero-slider-container">
+            <div class="hero-card">
+                <!-- Жесткая синяя линия справа -->
+                <div class="hero-card-line"></div>
                 
-                <div class="hero-advantages">
-                    <div class="adv-item"><span>✓</span> Фиксированная цена до начала работ</div>
-                    <div class="adv-item"><span>✓</span> Работа без пыли (профессиональный инструмент)</div>
-                    <div class="adv-item"><span>✓</span> Официально: плательщик НПД, гарантия 12 месяцев</div>
-                    <div class="adv-item"><span>✓</span> Помощь с закупкой материалов в ОМА и Материке</div>
-                </div>
+                <div class="hero-card-content">
+                    <div class="text-slider-window">
+                        <div class="text-slider-track">
+                            
+                            <!-- Слайд 1: Электрика -->
+                            <div class="text-slide">
+                                <span class="slide-tag">ОСНОВНОЙ ПРОФИЛЬ</span>
+                                <h2>Профессиональные услуги <span>электрика</span></h2>
+                                <p>Безопасный перенос розеток, монтаж проводки под ключ, сборка щитов и навеска люстр. Работаю строго по допускам, штроблю без пыли с мощным строительным пылесосом.</p>
+                            </div>
 
-                <a href="#contacts" class="btn btn-main">Вызвать мастера / Рассчитать цену</a>
+                            <!-- Слайд 2: Сантехника -->
+                            <div class="text-slide">
+                                <span class="slide-tag">НАДЕЖНО И БЕЗ ТЕЧЕЙ</span>
+                                <h2>Качественный ремонт <span>сантехники</span></h2>
+                                <p>Быстрая замена смесителей, сифонов, устранение засоров и надежное подключение стиральных или посудомоечных машин. Использую проверенные материалы, даю гарантию.</p>
+                            </div>
+
+                            <!-- Слайд 3: Сборка мебели -->
+                            <div class="text-slide">
+                                <span class="slide-tag">АККУРАТНО И ПО ИНСТРУКЦИИ</span>
+                                <h2>Профессиональная сборка <span>мебели</span></h2>
+                                <p>Быстрая и качественная сборка шкафов-купе, комодов, кроватей, столов и кухонь любой сложности. Ровно регулирую фасады, меняю фурнитуру, работаю без царапин и сколов.</p>
+                            </div>
+
+                            <!-- Слайд 4: Мелкий ремонт -->
+                            <div class="text-slide">
+                                <span class="slide-tag">МАСТЕР НА ЧАС</span>
+                                <h2>Любой мелкий бытовой <span>ремонт</span></h2>
+                                <p>Навеска телевизоров на кронштейны, зеркал, картин и карнизов для штор. Замена дверных замков и личинок. Быстро приеду со своим перфоратором и решу любые домашние хлопоты.</p>
+                            </div>
+
+                        </div>
+
+
+                        </div>
+                    </div>
+                    
+                    <!-- Ряд управления (Кнопка и стрелочки) -->
+                    <div class="slider-controls-row">
+                        <a href="#contacts" class="btn btn-main">Вызвать мастера</a>
+                        <div class="slider-navigation">
+                            <button class="nav-arrow" onclick="prevSlide()">←</button>
+                            <button class="nav-arrow" onclick="nextSlide()">→</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="hero-image">
-                <!-- Сюда вставите ваше фото в рабочей форме -->
-                <img src="assets/images/master-photo.png" alt="Мастер на час Минск">
+        </div>
+
+        <!-- Индикаторы-точки под баннером -->
+        <div class="slider-dots-container">
+            <div class="container">
+                <div class="slider-dots">
+                    <div class="dot active" onclick="currentSlide(0)"></div>
+                    <div class="dot" onclick="currentSlide(1)"></div>
+                    <div class="dot" onclick="currentSlide(2)"></div>
+                    <div class="dot" onclick="currentSlide(3)"></div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- 3. БЛОК С 4 КАТЕГОРИЯМИ УСЛУГ (Плитка / Гриды) -->
+
+
+
+
+
+
+
+
+
+
+    <!-- 3. БЛОК С 4 КАТЕГОРИЯМИ УСЛУГ -->
     <main class="services-section">
-        <div class="container">
+        <div class="container" style="position: relative;"> <!-- Добавили позицию для удержания координат -->
             <h2 class="section-title">Цены на услуги в Минске</h2>
             <p class="min-order">⚠️ Минимальная стоимость заказа (выезд мастера) — 40 BYN</p>
             
-<div class="services-grid">
+            <!-- Сетка карточек снова свободная, на всю ширину контейнера, как в твоей стабильной версии -->
+            <div class="services-grid">
+
+                                <!-- 🎯 НАШ НОВЫЙ СКЛАДНОЙ МЕТР: ВСТАЛ СЛЕВА ОТ ЭЛЕКТРИКИ -->
+                <div class="static-meter-box">
+                    <img src="assets/images/meter-animation.png" alt="Строительный метр" class="static-meter-img">
+                </div>
                 
-    <!-- Блок 1: Электрика (Желтый/Золотой оттенок) -->
-    <div class="service-card card-electric" id="electric">
-        <div class="card-header">
-            <div class="card-icon">⚡</div>
-            <h3>Электрика</h3>
-        </div>
-        <p class="card-desc">Основной профиль. Ремонт проводки, перенос розеток, сборка щитков и навеска люстр.</p>
-        <button class="btn btn-card" onclick="togglePrice('price-electric')">Посмотреть прайс-лист</button>
-
-        <div class="price-list-hidden" id="price-electric">
-            <div class="price-item"><span>Замена розетки/выключателя</span><b>15 BYN</b></div>
-            <div class="price-item"><span>Установка люстры / светильника</span><b>35 BYN</b></div>
-            <div class="price-item"><span>Штробление бетона (за 1 метр)</span><b>15 BYN</b></div>
-            <div class="price-item"><span>Сверление под подрозетник</span><b>18 BYN</b></div>
-            <div class="price-item"><span>Замена автомата в щитке</span><b>20 BYN</b></div>
-            <div class="price-item"><span>Подключение варочной панели</span><b>45 BYN</b></div>
-        </div>
-    </div>
-
-    <!-- Блок 2: Сантехника (Мягкий Синий/Голубой оттенок) -->
-    <div class="service-card card-plumbing" id="plumbing">
-        <div class="card-header">
-            <div class="card-icon">🚰</div>
-            <h3>Сантехника</h3>
-        </div>
-        <p class="card-desc">Мелкий ремонт без течей. Замена смесителей, сифонов, устранение засоров и подключение техники.</p>
-        <button class="btn btn-card" onclick="togglePrice('price-plumbing')">Посмотреть прайс-лист</button>
-        
-        <div class="price-list-hidden" id="price-plumbing">
-            <div class="price-item"><span>Установка/замена смесителя</span><b>45 BYN</b></div>
-            <div class="price-item"><span>Замена сифона (кухня/ванная)</span><b>35 BYN</b></div>
-            <div class="price-item"><span>Герметизация стыков силиконом</span><b>35 BYN</b></div>
-            <div class="price-item"><span>Устранение мелкого засора</span><b>50 BYN</b></div>
-            <div class="price-item"><span>Ремонт арматуры бачка</span><b>40 BYN</b></div>
-            <div class="price-item"><span>Подключение стиральной машины</span><b>45 BYN</b></div>
-        </div>
-    </div>
-
-    <!-- Блок 3: Сборка мебели (Теплый Древесный/Оранжевый оттенок) -->
-    <div class="service-card card-furniture" id="furniture">
-        <div class="card-header">
-            <div class="card-icon">🪚</div>
-            <h3>Сборка мебели</h3>
-        </div>
-        <p class="card-desc">Профессиональная сборка корпусной и мягкой мебели по инструкциям. Ремонт фурнитуры.</p>
-        <button class="btn btn-card" onclick="togglePrice('price-furniture')">Посмотреть прайс-лист</button>
-        
-        <div class="price-list-hidden" id="price-furniture">
-            <div class="price-item"><span>Сборка стола / кресла</span><b>35 BYN</b></div>
-            <div class="price-item"><span>Сборка комода (от 4 ящиков)</span><b>65 BYN</b></div>
-            <div class="price-item"><span>Сборка кровати с подъемным мех.</span><b>80 BYN</b></div>
-            <div class="price-item"><span>Сборка шкафа-купе (2-дверного)</span><b>85 BYN</b></div>
-            <div class="price-item"><span>Регулировка фасадов / дверей</span><b>10 BYN</b></div>
-            <div class="price-item"><span>Почасовая сборка (при объемах)</span><b>30 BYN/ч</b></div>
-        </div>
-    </div>
-
-    <!-- Блок 4: Мелкий ремонт (Технологичный Стальной/Бирюзовый оттенок) -->
-    <div class="service-card card-handyman" id="handyman">
-        <div class="card-header">
-            <div class="card-icon">🔨</div>
-            <h3>Мелкий ремонт</h3>
-        </div>
-        <p class="card-desc">Интерьерные и перфораторные работы. Навеска зеркал, картин, телевизоров, замена замков.</p>
-        <button class="btn btn-card" onclick="togglePrice('price-handyman')">Посмотреть прайс-лист</button>
-        
-        <div class="price-list-hidden" id="price-handyman">
-            <div class="price-item"><span>Замена замка / личинки двери</span><b>25 BYN</b></div>
-            <div class="price-item"><span>Навеска телевизора на кронштейн</span><b>40 BYN</b></div>
-            <div class="price-item"><span>Монтаж карниза для штор</span><b>35 BYN</b></div>
-            <div class="price-item"><span>Навеска зеркала / картины</span><b>20 BYN</b></div>
-            <div class="price-item"><span>Навеска сушилки на балкон</span><b>40 BYN</b></div>
-            <div class="price-item"><span>Крепление плинтуса (за 1 метр)</span><b>5 BYN</b></div>
-        </div>
-    </div>
-
-</div>
-<!-- Центрированная кнопка вызова калькулятора -->
-<div style="text-align: center; margin-top: 40px;">
-<button class="btn btn-main" id="btn-toggle-calc" onclick="toggleCalculator()" style="background-color: #f1c40f; color: #121212; padding: 16px 35px; font-size: 18px;">
-    ⁝⁝ Калькулятор расчета переноса розеток
-</button>
-
-
-</div>
-
-
-        </div>
-    </main>
-
-
-
-<!-- ИНТЕРАКТИВНЫЙ КАЛЬКУЛЯТОР КУХНИ -->
-<section class="calculator-section">
-    <div class="container">
-<h2 class="calc-title"><span>⁝⁝</span> Калькулятор: Перенос и монтаж розеток под ключ</h2>
-
-
-<p class="calc-subtitle">Рассчитайте примерную стоимость черновых работ для комнат, коридора или кухни за 10 секунд</p>
-
-
-        <div class="calc-wrapper">
-            <!-- Левая часть: Ползунки и настройки -->
-            <div class="calc-inputs">
-                
-                <!-- Материал стен -->
-                <div class="calc-group">
-                    <label>Материал стен вашей квартиры:</label>
-                    <div class="radio-group">
-                        <label class="radio-label">
-                            <input type="radio" name="wall-material" value="concrete" checked onchange="calculateKitchen()">
-                            <span>Бетон (панельный дом)</span>
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="wall-material" value="brick" onchange="calculateKitchen()">
-                            <span>Кирпич / Блоки</span>
-                        </label>
+                <!-- Карточка 1: Электрика -->
+                <div class="service-card card-electric" id="card-electric">
+                    <div class="card-header-layout">
+                        <div class="card-illustration">
+                            <img src="assets/images/ico-electric.png" alt="Услуги электрика Минск">
+                        </div>
+                        <h3>Электрика</h3>
                     </div>
+                    <p class="card-desc">Основной профиль. Ремонт проводки, безопасный перенос розеток, сборка щитков и навеска люстр.</p>
+                    <button class="btn btn-card" data-service="electric" onclick="showWidePrice('electric')">Посмотреть прайс-лист</button>
                 </div>
 
-                <!-- Количество новых розеток -->
-                <div class="calc-group">
-                    <div class="range-header">
-                        <label>Количество новых розеток/точек:</label>
-                        <span id="sockets-val">6 шт.</span>
+                <!-- Карточка 2: Сантехника -->
+                <div class="service-card card-plumbing" id="card-plumbing">
+                    <div class="card-header-layout">
+                        <div class="card-illustration">
+                            <img src="assets/images/ico-plumbing.png" alt="Услуги сантехника Минск">
+                        </div>
+                        <h3>Сантехника</h3>
                     </div>
-                    <input type="range" id="sockets-range" min="1" max="25" value="6" oninput="calculateKitchen()">
+                    <p class="card-desc">Мелкий ремонт без течей. Замена смесителей, сифонов, устранение засоров и подключение техники.</p>
+                    <button class="btn btn-card" data-service="plumbing" onclick="showWidePrice('plumbing')">Посмотреть прайс-лист</button>
                 </div>
 
-                <!-- Метры штробы -->
-                <div class="calc-group">
-                    <div class="range-header">
-                        <label>Примерная длина штробы (метров):</label>
-                        <span id="strobe-val">5 м.</span>
+                <!-- Карточка 3: Сборка мебели -->
+                <div class="service-card card-furniture" id="card-furniture">
+                    <div class="card-header-layout">
+                        <div class="card-illustration">
+                            <img src="assets/images/ico-furniture.png" alt="Сборка мебели Минск">
+                        </div>
+                        <h3>Сборка мебели</h3>
                     </div>
-                    <input type="range" id="strobe-range" min="1" max="30" value="5" oninput="calculateKitchen()">
+                    <p class="card-desc">Профессиональная сборка корпусной и мягкой мебели по инструкциям. Ремонт и регулировка фурнитуры.</p>
+                    <button class="btn btn-card" data-service="furniture" onclick="showWidePrice('furniture')">Посмотреть прайс-лист</button>
+                </div>
+
+                <!-- Карточка 4: Мелкий ремонт -->
+                <div class="service-card card-handyman" id="card-handyman">
+                    <div class="card-header-layout">
+                        <div class="card-illustration">
+                            <img src="assets/images/ico-handyman.png" alt="Мелкий бытовой ремонт Минск">
+                        </div>
+                        <h3>Мелкий ремонт</h3>
+                    </div>
+                    <p class="card-desc">Интерьерные и перфораторные работы. Навеска зеркал, картин, телевизоров, оперативная замена замков.</p>
+                    <button class="btn btn-card" data-service="handyman" onclick="showWidePrice('handyman')">Посмотреть прайс-лист</button>
+                </div>
+
+            </div> <!-- Конец services-grid -->
+
+ 
+
+
+            <!-- 🎯 НАШ ПРОСТОЙ ШУРУПОВЕРТ: СТОИТ НА МЕСТЕ И НИЧЕГО НЕ ДЕЛАЕТ -->
+            <div class="static-drill-box">
+                <img src="assets/images/drill-animation.png" alt="Мастер за работой" class="static-drill-img">
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <!-- 📋 БЛОК 3.2: ОБЩАЯ ШИРОКАЯ ИНТЕРАКТИВНАЯ ПАНЕЛЬ ПРАЙС-ЛИСТОВ (ПО СХЕМЕ) -->
+            <div class="wide-price-panel" id="wide-price-panel">
+                
+                <!-- Заголовок панели, который будет меняться через JavaScript -->
+                <div class="price-panel-header">
+                    <h3 id="price-panel-title">Прайс-лист на услуги</h3>
+                    <button class="btn-close-panel" onclick="closeWidePrice()">✕ Закрыть прайс</button>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+        <!-- ⚡ 1. ПРАЙС-ЛИСТ: ЭЛЕКТРИКА (Точное совпадение по твоей схеме) -->
+        <div class="price-content-block" id="wide-price-electric">
+            <div class="price-grid-layout">
+                <div class="price-tile-card active-top-row">
+                    <div class="tile-premium-bg-sticker tile-img-socket"></div>
+                    <div class="tile-info">
+                        <h4>Замена или перенос розетки</h4>
+                        <p>Монтаж новых точек, штробление, перенос розеток и выключателей по схеме под кухонные гарнитуры и жилые зоны.</p>
+                    </div>
+                    <div class="tile-price-tag">15 BYN</div>
+                </div>
+                <div class="price-tile-card active-top-row">
+                    <div class="tile-premium-bg-sticker tile-img-chandelier"></div>
+                    <div class="tile-info">
+                        <h4>Люстры и светильники</h4>
+                        <p>Сборка, безопасное подключение и надежная навеска люстр, потолочных светильников, спотов, бра и светодиодных лент.</p>
+                    </div>
+                    <div class="tile-price-tag">35 BYN</div>
+                </div>
+                <div class="price-tile-card">
+                    <div class="tile-premium-bg-sticker tile-img-diagnostic"></div>
+                    <div class="tile-info">
+                        <h4>Диагностика проводки</h4>
+                        <p>Оперативный выезд при экстренных авариях: поиск короткого замыкания, обрыва сети, если выбивает автоматы или пропал свет.</p>
+                    </div>
+                    <div class="tile-price-tag">30 BYN</div>
+                </div>
+                <div class="price-tile-card">
+                    <div class="tile-premium-bg-sticker tile-img-breaker"></div>
+                    <div class="tile-info">
+                        <h4>Замена автомата в щитке</h4>
+                        <p>Демонтаж старых пробок или отработавших выключателей, установка надежного однополюсного автомата, УЗО или дифавтомата.</p>
+                    </div>
+                    <div class="tile-price-tag">20 BYN</div>
+                </div>
+                <div class="price-tile-card">
+                    <div class="tile-premium-bg-sticker tile-img-hob"></div>
+                    <div class="tile-info">
+                        <h4>Варочные панели и шкафы</h4>
+                        <p>Профессиональное подключение мощной кухонной техники к электросети 220В/380В, монтаж силовых розеток и кабелей.</p>
+                    </div>
+                    <div class="tile-price-tag">45 BYN</div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+        </div>
+
+        <!-- 🚰 2. ПРАЙС-ЛИСТ: САНТЕХНИКА (Строго по твоему оригиналу) -->
+        <div class="price-content-block" id="wide-price-plumbing">
+            <div class="price-grid-layout">
+                <div class="price-tile-card">
+                    <div class="tile-premium-bg-sticker tile-img-mixer"></div>
+                    <div class="tile-info">
+                        <h4>Установка смесителя</h4>
+                        <p>Профессиональная установка / замена смесителя в ванной комнате или на кухне с гарантией от протечек.</p>
+                    </div>
+                    <div class="tile-price-tag">45 BYN</div>
+                </div>
+                <div class="price-tile-card">
+                    <div class="tile-premium-bg-sticker tile-img-siphon"></div>
+                    <div class="tile-info">
+                        <h4>Замена сифона</h4>
+                        <p>Замена сифона раковины, мойки или ванной для надежного слива и блокирования неприятных запахов.</p>
+                    </div>
+                    <div class="tile-price-tag">35 BYN</div>
+                </div>
+                <div class="price-tile-card">
+                    <div class="tile-premium-bg-sticker tile-img-silicone"></div>
+                    <div class="tile-info">
+                        <h4>Герметизация стыков</h4>
+                        <p>Герметизация стыков силиконом (устранение течи) вокруг ванны, раковины или кухонной мойки.</p>
+                    </div>
+                    <div class="tile-price-tag">35 BYN</div>
+                </div>
+                <div class="price-tile-card">
+                    <div class="tile-premium-bg-sticker tile-img-clog"></div>
+                    <div class="tile-info">
+                        <h4>Устранение засоров</h4>
+                        <p>Оперативное устранение мелкого бытового засора в сливах, трубах, раковинах или унитазах.</p>
+                    </div>
+                    <div class="tile-price-tag">50 BYN</div>
+                </div>
+                <div class="price-tile-card">
+                    <div class="tile-premium-bg-sticker tile-img-toilet"></div>
+                    <div class="tile-info">
+                        <h4>Ремонт бачка унитаза</h4>
+                        <p>Ремонт или замена сливной арматуры бачка унитаза при постоянном подтекании или плохом наборе воды.</p>
+                    </div>
+                    <div class="tile-price-tag">40 BYN</div>
+                </div>
+                <div class="price-tile-card">
+                    <div class="tile-premium-bg-sticker tile-img-washer"></div>
+                    <div class="tile-info">
+                        <h4>Подключение техники</h4>
+                        <p>Подключение стиральной или посудомоечной машины к системе водоснабжения, канализации и выставление по уровню.</p>
+                    </div>
+                    <div class="tile-price-tag">45 BYN</div>
+                </div>
+            </div>
+        </div>
+        <!-- 🪚 3. ПРАЙС-ЛИСТ: СБОРКА И РЕМОНТ МЕБЕЛИ (Точное совпадение по твоим скриншотам) -->
+        <div class="price-content-block" id="wide-price-furniture">
+            <div class="price-grid-layout">
+                
+                <div class="price-tile-card">
+                    <div class="tile-premium-bg-sticker tile-img-table"></div>
+                    <div class="tile-info">
+                        <h4>Сборка стола или стула</h4>
+                        <p>Профессиональная сборка стола, стула или удобного офисного и компьютерного кресла.</p>
+                    </div>
+                    <div class="tile-price-tag">35 BYN</div>
+                </div>
+
+                <div class="price-tile-card">
+                    <div class="tile-premium-bg-sticker tile-img-dresser"></div>
+                    <div class="tile-info">
+                        <h4>Сборка комода в прихожей</h4>
+                        <p>Качественная сборка комода, тумбы или мебели в прихожую (расчет от 4 выдвижных ящиков).</p>
+                    </div>
+                    <div class="tile-price-tag">65 BYN</div>
+                </div>
+
+                <div class="price-tile-card">
+                    <div class="tile-premium-bg-sticker tile-img-bed"></div>
+                    <div class="tile-info">
+                        <h4>Сборка кровати</h4>
+                        <p>Надежная сборка односпальных и двухспальных кроватей, включая модели с подъемным механизмом.</p>
+                    </div>
+                    <div class="tile-price-tag">80 BYN</div>
+                </div>
+
+                <div class="price-tile-card">
+                    <div class="tile-premium-bg-sticker tile-img-wardrobe"></div>
+                    <div class="tile-info">
+                        <h4>Сборка шкафа-купе</h4>
+                        <p>Сборка стандартного двухдверного шкафа-купе, гардероба или крупной корпусной мебели.</p>
+                    </div>
+                    <div class="tile-price-tag">85 BYN</div>
+                </div>
+
+                <div class="price-tile-card">
+                    <div class="tile-premium-bg-sticker tile-img-hinge"></div>
+                    <div class="tile-info">
+                        <h4>Регулировка мебельных фасадов</h4>
+                        <p>Точечная регулировка мебельных фасадов, дверей шкафов, кухонных модулей и петель.</p>
+                    </div>
+                    <div class="tile-price-tag">10 BYN</div>
+                </div>
+
+                <div class="price-tile-card">
+                    <div class="tile-premium-bg-sticker tile-img-disassemble"></div>
+                    <div class="tile-info">
+                        <h4>Почасовая сборка мебели</h4>
+                        <p>Удобный тариф для сборки или разборки мебели при больших объемах работ или переездах.</p>
+                    </div>
+                    <div class="tile-price-tag">30 BYN/ч</div>
                 </div>
 
             </div>
-
-            <!-- Правая часть: Итоговый чек и кнопка отправки -->
-<div class="calc-result">
-    <h3>Предварительная смета на работы:</h3>
-    <div class="result-item"><span>Подрозетники:</span> <strong id="res-boxes">0 BYN</strong></div>
-    <div class="result-item"><span>Штробление стен:</span> <strong id="res-strobe">0 BYa</strong></div>
-    <div class="result-item"><span>Прокладка кабеля:</span> <strong id="res-cable">0 BYN</strong></div>
-    
-<div class="result-total">
-    <span>Итого за работу:</span>
-    <strong id="calc-total-val">0 BYN</strong>
-</div>
-
-<!-- ⚠️ ВОТ ЭТОТ БЛОК ДЛЯ МАТЕРИАЛОВ ВСТАВЬТЕ СЮДА -->
-<p style="color: #f1c40f; font-size: 14px; font-weight: bold; text-align: right; margin-top: -10px; margin-bottom: 20px;">
-    ⚠️ Стоимость материалов в расчет НЕ ВХОДИТ и оплачивается отдельно
-</p>
-
-    
-    <!-- НОВОЕ: Поле с готовым текстом для клиента -->
-    <div class="calc-msg-box" style="margin-bottom: 15px;">
-        <textarea id="calc-text-msg" readonly style="width: 100%; height: 70px; background: #2a2a2a; color: #aaa; border: 1px solid #444; border-radius: 6px; padding: 8px; font-size: 12px; resize: none;"></textarea>
-    </div>
-    
-    <!-- НОВАЯ КНОПКА: Сначала копирует, потом открывает чат -->
-    <button class="btn btn-calc-send" id="btn-copy-send" onclick="copyAndOpenTelegram()">📋 Скопировать смету и открыть Telegram</button>
-<p class="calc-note" style="font-size: 13px; color: #fff; margin-top: 12px; text-align: center; line-height: 1.4;">
-    <strong>Важно:</strong> Данный расчет включает только стоимость РАБОТЫ. <br>
-    Строительные материалы (кабель, подрозетники и др.) закупаются отдельно по чекам из магазина.
-</p>
-
-</div>
-
         </div>
-    </div>
-</section>
+
+        <!-- 🔨 4. ПРАЙС-ЛИСТ: МЕЛКИЙ БЫТОВОЙ РЕМОНТ (Точное совпадение по твоим скриншотам) -->
+        <div class="price-content-block" id="wide-price-handyman">
+            <div class="price-grid-layout">
+                
+                <div class="price-tile-card">
+                    <div class="tile-premium-bg-sticker tile-img-lock"></div>
+                    <div class="tile-info">
+                        <h4>Замена дверного замка</h4>
+                        <p>Оперативная и надежная замена дверного замка, ручки или сердцевины (личинки) входной и межкомнатной двери.</p>
+                    </div>
+                    <div class="tile-price-tag">25 BYN</div>
+                </div>
+
+                <div class="price-tile-card">
+                    <div class="tile-premium-bg-sticker tile-img-tv"></div>
+                    <div class="tile-info">
+                        <h4>Навеска большого телевизора</h4>
+                        <p>Надежный монтаж настенного кронштейна и безопасная навеска телевизора любой диагонали.</p>
+                    </div>
+                    <div class="tile-price-tag">40 BYN</div>
+                </div>
+
+                <div class="price-tile-card">
+                    <div class="tile-premium-bg-sticker tile-img-cornice"></div>
+                    <div class="tile-info">
+                        <h4>Монтаж карниза для штор</h4>
+                        <p>Надежный монтаж потолочного или настенного карниза для штор, гардины, жалюзи или роллетов.</p>
+                    </div>
+                    <div class="tile-price-tag">35 BYN</div>
+                </div>
+
+                <div class="price-tile-card">
+                    <div class="tile-premium-bg-sticker tile-img-mirror"></div>
+                    <div class="tile-info">
+                        <h4>Навеска зеркал и картин</h4>
+                        <p>Аккуратное сверление стен и навеска настенного зеркала, полки, картины или вешалки в прихожую.</p>
+                    </div>
+                    <div class="tile-price-tag">20 BYN</div>
+                </div>
+
+                <div class="price-tile-card">
+                    <div class="tile-premium-bg-sticker tile-img-dryer"></div>
+                    <div class="tile-info">
+                        <h4>Монтаж сушилки на балкон</h4>
+                        <p>Качественная сборка и монтаж потолочной или настенной сушилки для белья (Лиана) на балкон.</p>
+                    </div>
+                    <div class="tile-price-tag">40 BYN</div>
+                </div>
+
+                <div class="price-tile-card">
+                    <div class="tile-premium-bg-sticker tile-img-plinth"></div>
+                    <div class="tile-info">
+                        <h4>Крепление напольного плинтуса</h4>
+                        <p>Качественная подрезка, стыковка уголков и крепление напольного пластикового плинтуса за 1 метр.</p>
+                    </div>
+                    <div class="tile-price-tag">5 BYN</div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+
+            </div> <!-- Конец wide-price-panel -->
+
+            <!-- 📟 БЛОК 3.5: НАШ ИДЕАЛЬНЫЙ СИММЕТРИЧНЫЙ КАЛЬКУЛЯТОР CITIZEN -->
+
+            <div class="static-pliers-box">
+               <img src="assets/images/pliers-decor.png" alt="Профессиональный инструмент Gedore" class="static-pliers-img">
+            </div>
+
+            <div class="calc-preview-row">
+                <div class="calc-device-vector">
+                    <div class="vector-screen"><div class="vector-screen-digits">220.00</div></div>
+                    <div class="vector-main-body-layout">
+                        <div class="vector-buttons-grid">
+                            <div class="v-btn v-btn-orange">C/CE</div><div class="v-btn">OFF</div>
+                            <div class="v-btn">MRC</div><div class="v-btn">M-</div>
+                            <div class="v-btn v-btn-digit">7</div><div class="v-btn v-btn-digit">8</div>
+                            <div class="v-btn v-btn-digit">4</div><div class="v-btn v-btn-digit">5</div>
+                            <div class="v-btn v-btn-digit">1</div><div class="v-btn v-btn-digit">2</div>
+                            <div class="v-btn v-btn-digit">0</div><div class="v-btn v-btn-digit">.</div>
+                        </div>
+                        <div class="vector-right-wing">
+                            <div class="v-btn v-btn-blue v-btn-percent">%</div>
+                            <button class="integrated-trigger-btn" id="btn-toggle-calc" onclick="toggleCalculator()">Рассчитать перенос розеток</button>
+                        </div>
+                    </div>
+                </div>
+            <!-- Правая сторона: Заголовок на самом верху, а рамка с картинкой опускается ниже -->
+            <div class="calc-photo-vector-wrapper">
+                <!-- 🎯 ТЕПЕРЬ НАДПИСЬ СТРОГО НАД РАМКОЙ -->
+                <h3 class="calc-vector-outer-title">Перенос розеток</h3>
+                
+                <!-- Сама рамка, которая опустится вниз к линии калькулятора -->
+                <div class="calc-photo-vector">
+                    <img src="assets/images/calkulator_smeta.png" alt="Профессиональный перенос розеток в Минске" class="calc-vector-img">
+                </div>
+            </div>
+
+
+            </div>
+
+
+            <!-- 🛠️ СКРЫТЫЙ ИНТЕРАКТИВНЫЙ БЛОК КАЛЬКУЛЯТОРА -->
+            <div class="calculator-section">
+                <div class="calc-interactive-box">
+                    
+                    <div class="calc-inputs-side">
+                        <h3 class="interactive-title">Параметры для расчета переноса:</h3>
+                        
+                        <div class="calc-group">
+                            <label>Материал стен вашей квартиры:</label>
+
+                            
+                            <div class="radio-group">
+                                <label class="radio-label">
+                                    <input type="radio" name="wall-material" value="concrete" checked onchange="calculateKitchen()">
+                                    <span>Бетон (панельный дом)</span>
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="wall-material" value="brick" onchange="calculateKitchen()">
+                                    <span>Кирпич / Блоки</span>
+                                </label>
+
+
+
+                            </div>
+                        </div>
+
+                        <div class="calc-group">
+                            <div class="range-header">
+                                <label>Количество новых розеток/точек:</label>
+                                <span id="sockets-val">6 шт.</span>
+                            </div>
+                            <input type="range" id="sockets-range" min="1" max="25" value="6" oninput="calculateKitchen()">
+                        </div>
+
+                        <div class="calc-group">
+                            <div class="range-header">
+                                <label>Примерная длина штробы (метров):</label>
+                                <span id="strobe-val">5 м.</span>
+                            </div>
+                            <input type="range" id="strobe-range" min="1" max="30" value="5" oninput="calculateKitchen()">
+                        </div>
+                    </div>
+
+                    <div class="calc-results-side">
+                        <h3 class="results-title">Предварительная смета работы:</h3>
+                        
+                        <div class="calc-result-rows-container">
+                            <div class="result-item">
+                                <span class="item-name">Монтаж подрозетников:</span> 
+                                <strong class="item-price" id="res-boxes">0 BYN</strong>
+                            </div>
+                            <div class="result-item">
+                                <span class="item-name">Штробление стен под кабель:</span> 
+                                <strong class="item-price" id="res-strobe">0 BYN</strong>
+                            </div>
+                            <div class="result-item">
+                                <span class="item-name">Прокладка силового кабеля:</span> 
+                                <strong class="item-price" id="res-cable">0 BYN</strong>
+                            </div>
+                        </div>
+                        
+                        <div class="result-total-block">
+                            <span class="total-label">Итого за работу мастера:</span>
+                            <strong class="total-price-value" id="calc-total-val">0 BYN</strong>
+                        </div>
+                        
+                        <div class="calc-msg-box" style="display: none;">
+                            <textarea id="calc-text-msg" readonly></textarea>
+                        </div>
+                        
+                        <button class="btn btn-calc-send" id="btn-copy-send" onclick="copyAndOpenTelegram()">📋 Скопировать смету и открыть Telegram</button>
+                        <p class="calc-warning-note">⚠️ Внимание: Данный расчет включает только стоимость РАБОТЫ мастера. Строительные материалы закупаются отдельно.</p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div> <!-- Закрытие главного тега container -->
 
 
 
 
 
 
-    <!-- 4. ПОДВАЛ И КОНТАКТЫ (Связь и соцсети) -->
+
+
+
+    </main>
+
+    <!-- 4. ПОДВАЛ И КОНТАКТЫ -->
     <footer class="contacts-section" id="contacts">
         <div class="container contacts-container">
             <h2>Нужен качественный ремонт? Свяжитесь со мной!</h2>
             <p class="contacts-subtitle">Пришлите описание задачи или фото поломки в мессенджеры — я сразу назову точную стоимость.</p>
             
-            <!-- Крупная кнопка прямого звонка -->
-            <div class="main-phone-box">
-                <a href="tel:+37529XXXXXXX" class="btn-phone">📞 Позвонить: +375 (33) 676-41-97</a>
-            </div>
+            <!-- Переделанный контейнер под наклейки-мессенджеры -->
+            <div class="footer-stickers-container">
+                
+                <!-- 🎯 Наклейка: Позвонить -->
+                <a href="tel:+375336764197" class="footer-sticker-btn" title="Позвонить Мастеру">
+                    <div class="sticker-media sticker-btn-phone"></div>
+                </a>
 
-            <!-- Блок кнопок мессенджеров и соцсетей -->
-            <div class="social-links">
-                <a href="https://viber.click" class="soc-btn viber" target="_blank">Написать в Viber</a>
-                <a href="http://t.me/Master_House_BY_bot" class="soc-btn telegram" target="_blank">Написать в Telegram</a>
-                <a href="https://instagram.com" class="soc-btn instagram" target="_blank">Наш Instagram (До/После)</a>
+                <!-- 🎯 Наклейка: Viber -->
+                <a href="viber://chat?number=%2B375336764197" class="footer-sticker-btn" target="_blank" title="Написать в Viber">
+                    <div class="sticker-media sticker-btn-viber"></div>
+                </a>
+
+                <!-- 🎯 Наклейка: Telegram -->
+                <a href="https://t.me" class="footer-sticker-btn" target="_blank" title="Написать в Telegram">
+                    <div class="sticker-media sticker-btn-telegram"></div>
+                </a>
+
+                <!-- 🎯 Наклейка: Instagram -->
+                <a href="https://instagram.com" class="footer-sticker-btn" target="_blank" title="Наш Instagram">
+                    <div class="sticker-media sticker-btn-instagram"></div>
+                </a>
+                
             </div>
 
             <div class="footer-bottom">
@@ -258,7 +629,18 @@
         </div>
     </footer>
 
-    <!-- Подключаем JavaScript логику -->
+
     <script src="assets/js/main.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
