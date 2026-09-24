@@ -222,50 +222,23 @@
 
 
 
-
-
-
-
-
-
-
-
-        <!-- ⚡ 1. ПРАЙС-ЛИСТ: ЭЛЕКТРИКА (Точное совпадение по твоей схеме) -->
+        <!-- ⚡ 1. ПРАЙС-ЛИСТ: ЭЛЕКТРИКА (Идеальная симметрия близнец: 8 пунктов, схема как в мебели и сантехнике) -->
         <div class="price-content-block" id="wide-price-electric">
             <div class="price-grid-layout">
-                <div class="price-tile-card active-top-row">
-                    <div class="tile-premium-bg-sticker tile-img-socket"></div>
+                
+                <!-- РЯД 1 (ВЕРХНИЙ): Две элитные крупные карточки во всю ширь -->
+                <!-- Плитка 1: Сборка и монтаж электрощита -->
+                <div class="price-tile-card active-top-row" onclick="openElectricInfo('panel-build')">
+                    <div class="tile-premium-bg-sticker tile-img-panel-build"></div>
                     <div class="tile-info">
-                        <h4>Замена или перенос розетки</h4>
-                        <p>Монтаж новых точек, штробление, перенос розеток и выключателей по схеме под кухонные гарнитуры и жилые зоны.</p>
+                        <h4>Сборка и монтаж электрощита</h4>
+                        <p>Профессиональная компоновка бокса, установка DIN-рейк, подключение вводных автоматов, УЗО, реле напряжения и распределение нагрузок.</p>
                     </div>
-                    <div class="tile-price-tag">15 BYN</div>
+                    <div class="tile-price-tag">от 80 BYN</div>
                 </div>
-                <div class="price-tile-card active-top-row">
-                    <div class="tile-premium-bg-sticker tile-img-chandelier"></div>
-                    <div class="tile-info">
-                        <h4>Люстры и светильники</h4>
-                        <p>Сборка, безопасное подключение и надежная навеска люстр, потолочных светильников, спотов, бра и светодиодных лент.</p>
-                    </div>
-                    <div class="tile-price-tag">35 BYN</div>
-                </div>
-                <div class="price-tile-card">
-                    <div class="tile-premium-bg-sticker tile-img-diagnostic"></div>
-                    <div class="tile-info">
-                        <h4>Диагностика проводки</h4>
-                        <p>Оперативный выезд при экстренных авариях: поиск короткого замыкания, обрыва сети, если выбивает автоматы или пропал свет.</p>
-                    </div>
-                    <div class="tile-price-tag">30 BYN</div>
-                </div>
-                <div class="price-tile-card">
-                    <div class="tile-premium-bg-sticker tile-img-breaker"></div>
-                    <div class="tile-info">
-                        <h4>Замена автомата в щитке</h4>
-                        <p>Демонтаж старых пробок или отработавших выключателей, установка надежного однополюсного автомата, УЗО или дифавтомата.</p>
-                    </div>
-                    <div class="tile-price-tag">20 BYN</div>
-                </div>
-                <div class="price-tile-card">
+
+                <!-- Плитка 2: Варочные панели -->
+                <div class="price-tile-card active-top-row" onclick="openElectricInfo('hob')">
                     <div class="tile-premium-bg-sticker tile-img-hob"></div>
                     <div class="tile-info">
                         <h4>Варочные панели и шкафы</h4>
@@ -273,7 +246,87 @@
                     </div>
                     <div class="tile-price-tag">45 BYN</div>
                 </div>
-            </div>
+
+                <!-- РЯДЫ 2 И 3: Остальные плитки встают в шахматный порядок по 3 в ряд -->
+                <!-- Плитка 3: Замена или перенос розетки -->
+                <div class="price-tile-card" onclick="openElectricInfo('socket')">
+                    <div class="tile-premium-bg-sticker tile-img-socket"></div>
+                    <div class="tile-info">
+                        <h4>Замена или перенос розетки</h4>
+                        <p>Монтаж новых точек, штробление, перенос розеток и выключателей по схеме под кухонные гарнитуры и жилые зоны.</p>
+                    </div>
+                    <div class="tile-price-tag">15 BYN</div>
+                </div>
+
+                  <!-- 💡 Плитка 4: Люстры и светильники -->
+                    <div class="price-tile-card" onclick="openElectricInfo('chandelier')">
+                       <div class="tile-premium-bg-sticker tile-img-chandelier"></div>
+                       <div class="tile-info">
+                       <h4>Люстры и светильники</h4>
+                       <p>Сборка, безопасное подключение и надежная навеска люстр, потолочных светильников, спотов, бра и светодиодных лент.</p>
+                    </div>
+                  <div class="tile-price-tag">35 BYN</div>
+                  </div>
+
+                <!-- Плитка 5: Диагностика проводки -->
+                <!-- 🔍 Плитка 5: Диагностика проводки -->
+                <div class="price-tile-card" onclick="openElectricInfo('diagnostic')">
+                    <div class="tile-premium-bg-sticker tile-img-diagnostic"></div>
+                    <div class="tile-info">
+                        <h4>Диагностика проводки</h4>
+                        <p>Оперативный выезд при экстренных авариях: поиск короткого замыкания, обрыва сети, если выбивает автоматы или пропал свет.</p>
+                    </div>
+                    <div class="tile-price-tag">30 BYN</div>
+                </div>
+
+                <!-- Плитка 6: Замена автомата в щитке -->
+                <!-- 🔌 Плитка 6: Замена автомата в щитке -->
+                    <div class="price-tile-card" onclick="openElectricInfo('breaker')">
+                    <div class="tile-premium-bg-sticker tile-img-breaker"></div>
+                    <div class="tile-info">
+                        <h4>Замена автомата в щитке</h4>
+                        <p>Демонтаж старых пробок или отработавших выключателей, установка надежного однополюсного автомата, УЗО или дифавтомата.</p>
+                    </div>
+                    <div class="tile-price-tag">20 BYN</div>
+                </div>
+
+                <!-- Плитка 7: Выключатели и диммеры (Твой раздельный стикер) -->
+                <!-- 🎛️ Плитка 7: Выключатели и диммеры -->
+                <div class="price-tile-card" onclick="openElectricInfo('switches')">
+                    <div class="tile-premium-bg-sticker tile-img-switches"></div>
+                    <div class="tile-info">
+                        <h4>Выключатели и диммеры</h4>
+                        <p>Чистовой монтаж выключателей, установка регуляторов яркости (диммеров), сборка проходных и перекрестных систем освещения.</p>
+                    </div>
+                    <div class="tile-price-tag">15 BYN</div>
+                </div>
+
+                  <!-- Плитка 8: Монтаж светодиодной ленты -->
+                  <!-- ✨ Плитка 8: Монтаж светодиодной ленты -->
+                <div class="price-tile-card" onclick="openElectricInfo('led-strip')">
+                    <div class="tile-premium-bg-sticker tile-img-led-strip"></div>
+                    <div class="tile-info">
+                        <h4>Монтаж светодиодной ленты</h4>
+                        <p>Профессиональная укладка светодиодных LED-лент в алюминиевый профиль, монтаж и пайка контактов, подключение блоков питания и контроллеров.</p>
+                    </div>
+                    <div class="tile-price-tag">от 15 BYN</div>
+                </div> <!-- 👈 1. Закрыли саму плитку светодиодной ленты -->
+
+                <!-- ========================================================================== -->
+                <!-- 🎯 ПАНЕЛЬ ДЛЯ ИНФОГРАФИКИ ЭЛЕКТРИКИ -->
+                <!-- ========================================================================== -->
+                <div class="tile-info-dropdown" id="tile-info-dropdown-electric">
+                    <div class="dropdown-close-btn" onclick="closeTileInfo('electric')">×</div>
+                    <h3 class="infographic-main-title" id="tile-info-title-electric">Полезная информация</h3>
+                    <div class="dropdown-content-wrapper">
+                        <div id="tile-info-text-electric" style="width: 100% !important;">
+                            <!-- Сюда JavaScript будет вставлять наши пошаговые этапы -->
+                        </div>
+                    </div>
+                </div> <!-- 👈 2. Закрыли саму скрытую панель электрики -->
+
+            </div> <!-- 👈 3. Закрыли внутреннюю сетку price-grid-layout -->
+        </div> <!-- 👈 4. Закрыли сам большой блок wide-price-electric -->
 
 
 
@@ -281,12 +334,13 @@
 
 
 
-        </div>
-
-        <!-- 🚰 2. ПРАЙС-ЛИСТ: САНТЕХНИКА (Строго по твоему оригиналу) -->
+        <!-- 🚰 2. ПРАЙС-ЛИСТ: САНТЕХНИКА -->
         <div class="price-content-block" id="wide-price-plumbing">
             <div class="price-grid-layout">
-                <div class="price-tile-card">
+                
+                <!-- РЯД 1 (ВЕРХНИЙ): Две крупные карточки -->
+                <!-- Плитка 1: Установка смесителя -->
+                <div class="price-tile-card active-top-row" onclick="openPlumbingInfo('mixer')">
                     <div class="tile-premium-bg-sticker tile-img-mixer"></div>
                     <div class="tile-info">
                         <h4>Установка смесителя</h4>
@@ -294,7 +348,9 @@
                     </div>
                     <div class="tile-price-tag">45 BYN</div>
                 </div>
-                <div class="price-tile-card">
+
+                <!-- Плитка 2: Замена сифона -->
+                <div class="price-tile-card active-top-row" onclick="openPlumbingInfo('siphon')">
                     <div class="tile-premium-bg-sticker tile-img-siphon"></div>
                     <div class="tile-info">
                         <h4>Замена сифона</h4>
@@ -302,7 +358,10 @@
                     </div>
                     <div class="tile-price-tag">35 BYN</div>
                 </div>
-                <div class="price-tile-card">
+
+                <!-- РЯДЫ 2 И 3: Остальные плитки по 3 в ряд -->
+                <!-- Плитка 3: Герметизация стыков -->
+                <div class="price-tile-card" onclick="openPlumbingInfo('silicone')">
                     <div class="tile-premium-bg-sticker tile-img-silicone"></div>
                     <div class="tile-info">
                         <h4>Герметизация стыков</h4>
@@ -310,7 +369,19 @@
                     </div>
                     <div class="tile-price-tag">35 BYN</div>
                 </div>
-                <div class="price-tile-card">
+
+                <!-- Плитка 4: Замена фильтров для воды -->
+                <div class="price-tile-card" onclick="openPlumbingInfo('filter')">
+                    <div class="tile-premium-bg-sticker tile-img-filter"></div>
+                    <div class="tile-info">
+                        <h4>Замена фильтров для воды</h4>
+                        <p>Качественная замена картриджей в проточных системах очистки под мойку и магистральных фильтрах с проверкой на протечки.</p>
+                    </div>
+                    <div class="tile-price-tag">40 BYN</div>
+                </div>
+
+                <!-- Плитка 5: Устранение засоров -->
+                <div class="price-tile-card" onclick="openPlumbingInfo('clog')">
                     <div class="tile-premium-bg-sticker tile-img-clog"></div>
                     <div class="tile-info">
                         <h4>Устранение засоров</h4>
@@ -318,7 +389,9 @@
                     </div>
                     <div class="tile-price-tag">50 BYN</div>
                 </div>
-                <div class="price-tile-card">
+
+                <!-- Плитка 6: Ремонт бачка унитаза -->
+                <div class="price-tile-card" onclick="openPlumbingInfo('toilet')">
                     <div class="tile-premium-bg-sticker tile-img-toilet"></div>
                     <div class="tile-info">
                         <h4>Ремонт бачка унитаза</h4>
@@ -326,7 +399,9 @@
                     </div>
                     <div class="tile-price-tag">40 BYN</div>
                 </div>
-                <div class="price-tile-card">
+
+                <!-- Плитка 7: Подключение техники -->
+                <div class="price-tile-card" onclick="openPlumbingInfo('washer')">
                     <div class="tile-premium-bg-sticker tile-img-washer"></div>
                     <div class="tile-info">
                         <h4>Подключение техники</h4>
@@ -334,40 +409,42 @@
                     </div>
                     <div class="tile-price-tag">45 BYN</div>
                 </div>
+
+                <!-- Плитка 8: Установка или замена унитаза -->
+                <div class="price-tile-card" onclick="openPlumbingInfo('wc-replace')">
+                    <div class="tile-premium-bg-sticker tile-img-wc-replace"></div>
+                    <div class="tile-info">
+                        <h4>Установка или замена унитаза</h4>
+                        <p>Профессиональный демонтаж старого оборудования, надежный монтаж нового компакт-унитаза, подключение к канализации и регулировка слива.</p>
+                    </div>
+                    <div class="tile-price-tag">75 BYN</div>
+                </div>
+
+                <!-- ℹ️ ИНДИВИДУАЛЬНАЯ ПАНЕЛЬ САНТЕХНИКИ -->
+                <div class="tile-info-dropdown" id="tile-info-dropdown-plumbing">
+                    <div class="dropdown-close-btn" onclick="closeTileInfo('plumbing')">×</div>
+                    <h3 class="infographic-main-title" id="tile-info-title-plumbing">Полезная информация</h3>
+                    <div class="dropdown-content-wrapper">
+                        <div id="tile-info-text-plumbing" style="width: 100% !important;">
+                            <!-- Сюда JS вставляет шаги сантехники -->
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
-        <!-- 🪚 3. ПРАЙС-ЛИСТ: СБОРКА И РЕМОНТ МЕБЕЛИ (Точное совпадение по твоим скриншотам) -->
+
+
+
+
+        <!-- 🪚 3. ПРАЙС-ЛИСТ: СБОРКА И РЕМОНТ МЕБЕЛИ (Идеальная симметрия с сантехникой) -->
         <div class="price-content-block" id="wide-price-furniture">
             <div class="price-grid-layout">
                 
-                <div class="price-tile-card">
-                    <div class="tile-premium-bg-sticker tile-img-table"></div>
-                    <div class="tile-info">
-                        <h4>Сборка стола или стула</h4>
-                        <p>Профессиональная сборка стола, стула или удобного офисного и компьютерного кресла.</p>
-                    </div>
-                    <div class="tile-price-tag">35 BYN</div>
-                </div>
-
-                <div class="price-tile-card">
-                    <div class="tile-premium-bg-sticker tile-img-dresser"></div>
-                    <div class="tile-info">
-                        <h4>Сборка комода в прихожей</h4>
-                        <p>Качественная сборка комода, тумбы или мебели в прихожую (расчет от 4 выдвижных ящиков).</p>
-                    </div>
-                    <div class="tile-price-tag">65 BYN</div>
-                </div>
-
-                <div class="price-tile-card">
-                    <div class="tile-premium-bg-sticker tile-img-bed"></div>
-                    <div class="tile-info">
-                        <h4>Сборка кровати</h4>
-                        <p>Надежная сборка односпальных и двухспальных кроватей, включая модели с подъемным механизмом.</p>
-                    </div>
-                    <div class="tile-price-tag">80 BYN</div>
-                </div>
-
-                <div class="price-tile-card">
+                <!-- РЯД 1 (ВЕРХНИЙ): Две крупные карточки во всю ширь для баланса -->
+                <!-- Плитка 1: Шкафы-купе -->
+                <!-- 🛋️ Плитка 1: Сборка шкафа-купе -->
+                <div class="price-tile-card active-top-row" onclick="openFurnitureInfo('wardrobe')">
                     <div class="tile-premium-bg-sticker tile-img-wardrobe"></div>
                     <div class="tile-info">
                         <h4>Сборка шкафа-купе</h4>
@@ -376,7 +453,66 @@
                     <div class="tile-price-tag">85 BYN</div>
                 </div>
 
-                <div class="price-tile-card">
+                <!-- Плитка 2: Кухни под ключ -->
+                <!-- 🍳 Плитка: Сборка кухни под ключ -->
+                <!-- 🍳 Плитка 2: Сборка кухни под ключ -->
+                <div class="price-tile-card active-top-row" onclick="openFurnitureInfo('kitchen')">
+                    <div class="tile-premium-bg-sticker tile-img-kitchen-install"></div>
+                    <div class="tile-info">
+                        <h4>Сборка кухни под ключ</h4>
+                        <p>Профессиональный монтаж корпусов, навеска верхних шкафов, установка фурнитуры, выравнивание фасадов и выставление по уровню.</p>
+                    </div>
+                    <div class="tile-price-tag">от 90 BYN</div>
+                </div>
+
+                <!-- РЯДЫ 2 И 3: Остальные плитки встают в шахматный порядок по 3 в ряд -->
+                <!-- Плитка 3: Столы и стулья -->
+                <!-- 🛋️ Плитка 3: Сборка стола или стула -->
+                <div class="price-tile-card" onclick="openFurnitureInfo('table')">
+                    <div class="tile-premium-bg-sticker tile-img-table"></div>
+                    <div class="tile-info">
+                        <h4>Сборка стола или стула</h4>
+                        <p>Профессиональная сборка стола, стула или удобного офисного и компьютерного кресла.</p>
+                    </div>
+                    <div class="tile-price-tag">35 BYN</div>
+                </div>
+
+                <!-- Плитка 4: Комоды -->
+                <!-- 🛋️ Плитка 4: Сборка комода или прихожей -->
+                <div class="price-tile-card" onclick="openFurnitureInfo('dresser')">
+                    <div class="tile-premium-bg-sticker tile-img-dresser"></div>
+                    <div class="tile-info">
+                        <h4>Сборка комода</h4>
+                        <p>Качественная сборка комода, тумбы или мебели в прихожую (расчет от 4 выдвижных ящиков).</p>
+                    </div>
+                    <div class="tile-price-tag">65 BYN</div>
+                </div>
+
+                <!-- Плитка 5: Кровати -->
+                <!-- 🛋️ Плитка 5: Сборка кровати -->
+                <div class="price-tile-card" onclick="openFurnitureInfo('bed')">
+                    <div class="tile-premium-bg-sticker tile-img-bed"></div>
+                    <div class="tile-info">
+                        <h4>Сборка кровати</h4>
+                        <p>Надежная сборка односпальных и двухспальных кроватей, включая модели с подъемным механизмом.</p>
+                    </div>
+                    <div class="tile-price-tag">80 BYN</div>
+                </div>
+
+                <!-- Плитка 6: Ремонт мебели и фурнитуры -->
+                <!-- 🛋️ Плитка 6: Ремонт мебели и замена фурнитуры -->
+                <div class="price-tile-card" onclick="openFurnitureInfo('furniture-repair')">
+                    <div class="tile-premium-bg-sticker tile-img-furniture-repair"></div>
+                    <div class="tile-info">
+                        <h4>Ремонт мебели и замена фурнитуры</h4>
+                        <p>Оперативная замена сломанных петель, установка новых выдвижных направляющих ящиков, замена газлифтов и ремонт корпусов.</p>
+                    </div>
+                    <div class="tile-price-tag">от 30 BYN</div>
+                </div>
+
+                <!-- Плитка 7: Регулировка фасадов -->
+                <!-- 🛋️ Плитка 7: Регулировка мебельных фасадов -->
+                <div class="price-tile-card" onclick="openFurnitureInfo('facade-align')">
                     <div class="tile-premium-bg-sticker tile-img-hinge"></div>
                     <div class="tile-info">
                         <h4>Регулировка мебельных фасадов</h4>
@@ -385,75 +521,144 @@
                     <div class="tile-price-tag">10 BYN</div>
                 </div>
 
-                <div class="price-tile-card">
+                <!-- Плитка 8: Почасовая сборка мебели -->
+                <!-- 🛋️ Плитка 8: Почасовая сборка мебели -->
+                <div class="price-tile-card" onclick="openFurnitureInfo('hourly-furniture')">
                     <div class="tile-premium-bg-sticker tile-img-disassemble"></div>
                     <div class="tile-info">
                         <h4>Почасовая сборка мебели</h4>
                         <p>Удобный тариф для сборки или разборки мебели при больших объемах работ или переездах.</p>
                     </div>
                     <div class="tile-price-tag">30 BYN/ч</div>
-                </div>
+                </div> <!-- 👈 1. Закрыли плитку 8 -->
 
-            </div>
-        </div>
+                <!-- ========================================================================== -->
+                <!-- 🛋️ ПАНЕЛЬ ДЛЯ ИНФОГРАФИКИ МЕБЕЛИ (СТРОГО ОТДЕЛЬНАЯ И НЕЗАВИСИМАЯ) -->
+                <!-- ========================================================================== -->
+                <div class="tile-info-dropdown" id="tile-info-dropdown-furniture">
+                    <div class="dropdown-close-btn" onclick="closeTileInfo('furniture')">×</div>
+                    <h3 class="infographic-main-title" id="tile-info-title-furniture">Полезная информация</h3>
+                    <div class="dropdown-content-wrapper">
+                        <div id="tile-info-text-furniture" style="width: 100% !important;">
+                            <!-- Сюда JavaScript будет вставлять наши пошаговые этапы сборки -->
+                        </div>
+                    </div>
+                </div> <!-- 👈 2. Закрыли скрытую панель мебели -->
 
-        <!-- 🔨 4. ПРАЙС-ЛИСТ: МЕЛКИЙ БЫТОВОЙ РЕМОНТ (Точное совпадение по твоим скриншотам) -->
+            </div> <!-- 👈 3. Закрыли внутреннюю сетку мебели (price-grid-layout) -->
+        </div> <!-- 👈 4. Закрыли большой блок мебели (wide-price-furniture) -->
+
+
+
+        <!-- 🔨 4. ПРАЙС-ЛИСТ: МЕЛКИЙ БЫТОВОЙ РЕМОНТ (ИСПРАВЛЕННАЯ СИММЕТРИЯ ОДИН В ОДИН С ЭЛЕКТРИКОЙ!) -->
         <div class="price-content-block" id="wide-price-handyman">
             <div class="price-grid-layout">
                 
-                <div class="price-tile-card">
+                <!-- 🎯 РЯД 1 (ВЕРХНИЙ): Растягиваем первые два пункта во весь ряд для идеальной симметрии -->
+                <!-- Плитка 1: Замена дверного замка -->
+                <!-- 🔑 Плитка 1: Замена дверного замка -->
+                <div class="price-tile-card active-top-row" onclick="openRepairInfo('lock-repair')">
                     <div class="tile-premium-bg-sticker tile-img-lock"></div>
                     <div class="tile-info">
                         <h4>Замена дверного замка</h4>
-                        <p>Оперативная и надежная замена дверного замка, ручки или сердцевины (личинки) входной и межкомнатной двери.</p>
+                        <p>Установка, врезка и замена дверных замков, надежных личинок (цилиндров), дверных ручек и защитной фурнитуры.</p>
                     </div>
                     <div class="tile-price-tag">25 BYN</div>
                 </div>
 
-                <div class="price-tile-card">
+                <!-- Плитка 2: Навеска телевизора -->
+                <!-- 📺 Плитка: Навеска большого телевизора -->
+                <div class="price-tile-card active-top-row" onclick="openRepairInfo('tv-mount')">
                     <div class="tile-premium-bg-sticker tile-img-tv"></div>
                     <div class="tile-info">
                         <h4>Навеска большого телевизора</h4>
-                        <p>Надежный монтаж настенного кронштейна и безопасная навеска телевизора любой диагонали.</p>
+                        <p>Надежный монтаж плоских LCD/OLED телевизоров на наклонно-поворотные и фиксированные настенные кронштейны по уровню.</p>
                     </div>
                     <div class="tile-price-tag">40 BYN</div>
                 </div>
 
-                <div class="price-tile-card">
+                <!-- РЯДЫ 2 И 3: Остальные 6 плиток аккуратно встают в тройки под ними -->
+                <!-- Плитка 3: Монтаж карниза -->
+                <!-- 🪟 Плитка: Монтаж карниза для штор -->
+                <div class="price-tile-card" onclick="openRepairInfo('curtain-mount')">
                     <div class="tile-premium-bg-sticker tile-img-cornice"></div>
                     <div class="tile-info">
                         <h4>Монтаж карниза для штор</h4>
-                        <p>Надежный монтаж потолочного или настенного карниза для штор, гардины, жалюзи или роллетов.</p>
+                        <p>Установка потолочных и настенных карнизов, телескопических штанг, треков и рулонных штор над окнами.</p>
                     </div>
                     <div class="tile-price-tag">35 BYN</div>
                 </div>
 
-                <div class="price-tile-card">
+                <!-- Плитка 4: Навеска зеркал и картин -->
+                <!-- 🖼️ Плитка: Навеска зеркал и картин -->
+                <div class="price-tile-card" onclick="openRepairInfo('mirror-mount')">
                     <div class="tile-premium-bg-sticker tile-img-mirror"></div>
                     <div class="tile-info">
                         <h4>Навеска зеркал и картин</h4>
-                        <p>Аккуратное сверление стен и навеска настенного зеркала, полки, картины или вешалки в прихожую.</p>
+                        <p>Аккуратное сверление стен и кафеля, симметричный монтаж тяжелых зеркал, картин, фоторамок и настенного декора.</p>
                     </div>
                     <div class="tile-price-tag">20 BYN</div>
                 </div>
 
-                <div class="price-tile-card">
+                <!-- Плитка 5: Монтаж сушилки на балконе -->
+                <!-- 🧺 Плитка 5: Монтаж сушилки на балконе -->
+                <div class="price-tile-card" onclick="openRepairInfo('dryer-mount')">
                     <div class="tile-premium-bg-sticker tile-img-dryer"></div>
                     <div class="tile-info">
-                        <h4>Монтаж сушилки на балкон</h4>
-                        <p>Качественная сборка и монтаж потолочной или настенной сушилки для белья (Лиана) на балкон.</p>
+                        <h4>Монтаж сушилки на балконе</h4>
+                        <p>Сборка и надежное крепление потолочных и настенных сушилок для белья («Лиана») с регулировкой шнуров.</p>
                     </div>
                     <div class="tile-price-tag">40 BYN</div>
                 </div>
 
-                <div class="price-tile-card">
+                <!-- Плитка 6: Крепление напольного плинтуса -->
+                <!-- 🪵 Плитка 6: Установка напольного плинтуса -->
+                <div class="price-tile-card" onclick="openRepairInfo('skirting-mount')">
                     <div class="tile-premium-bg-sticker tile-img-plinth"></div>
                     <div class="tile-info">
                         <h4>Крепление напольного плинтуса</h4>
-                        <p>Качественная подрезка, стыковка уголков и крепление напольного пластикового плинтуса за 1 метр.</p>
+                        <p>Монтаж пластиковых и МДФ плинтусов, аккуратная подгонка углов, установка соединителей и торцевых заглушек.</p>
                     </div>
-                    <div class="tile-price-tag">5 BYN</div>
+                    <div class="tile-price-tag">5 BYN/м</div>
                 </div>
+
+                <!-- Плитка 7: Монтаж турников и боксерских мешков -->
+                <!-- 🏋️ Плитка: Монтаж турников и мешков -->
+                <div class="price-tile-card" onclick="openRepairInfo('sports-mount')">
+                    <div class="tile-premium-bg-sticker tile-img-sports-mount"></div>
+                    <div class="tile-info">
+                        <h4>Монтаж турников и мешков</h4>
+                        <p>Надежное бурение стен, установка настенных спортивных турников, брусьев и подвес тяжелых боксерских груш на мощные анкерные болты.</p>
+                    </div>
+                    <div class="tile-price-tag">40 BYN</div>
+                </div>
+
+                <!-- Плитка 8: Установка упоров и аксессуаров -->
+                <!-- 🧻 Плитка 8: Установка приборов и аксессуаров -->
+                <div class="price-tile-card" onclick="openRepairInfo('accessories-mount')">
+                    <div class="tile-premium-bg-sticker tile-img-small-hardware"></div>
+                    <div class="tile-info">
+                        <h4>Установка упоров и аксессуаров</h4>
+                        <p>Пакетный монтаж мелкой интерьерной фурнитуры: напольных дверных упоров (стопперов), настенных крючков, вешалок и аксессуаров.</p>
+                    </div>
+                    <div class="tile-price-tag">20 BYN</div>
+                </div>
+
+
+                                <!-- ========================================================================== -->
+                <!-- 🔨 ПАНЕЛЬ ДЛЯ ИНФОГРАФИКИ МЕЛКОГО РЕМОНТА (ОТДЕЛЬНАЯ И НЕЗАВИСИМАЯ) -->
+                <!-- ========================================================================== -->
+                <div class="tile-info-dropdown" id="tile-info-dropdown-repair">
+                    <div class="dropdown-close-btn" onclick="closeTileInfo('repair')">×</div>
+                    <h3 class="infographic-main-title" id="tile-info-title-repair">Полезная информация</h3>
+                    <div class="dropdown-content-wrapper">
+                        <div id="tile-info-text-repair" style="width: 100% !important;">
+                            <!-- Сюда JavaScript будет вставлять наши пошаговые этапы ремонта -->
+                        </div>
+                    </div>
+                </div>
+                <!-- ========================================================================== -->
+
 
             </div>
         </div>
@@ -464,124 +669,13 @@
 
             </div> <!-- Конец wide-price-panel -->
 
-            <!-- 📟 БЛОК 3.5: НАШ ИДЕАЛЬНЫЙ СИММЕТРИЧНЫЙ КАЛЬКУЛЯТОР CITIZEN -->
+   
 
             <div class="static-pliers-box">
                <img src="assets/images/pliers-decor.png" alt="Профессиональный инструмент Gedore" class="static-pliers-img">
             </div>
 
-            <div class="calc-preview-row">
-                <div class="calc-device-vector">
-                    <div class="vector-screen"><div class="vector-screen-digits">220.00</div></div>
-                    <div class="vector-main-body-layout">
-                        <div class="vector-buttons-grid">
-                            <div class="v-btn v-btn-orange">C/CE</div><div class="v-btn">OFF</div>
-                            <div class="v-btn">MRC</div><div class="v-btn">M-</div>
-                            <div class="v-btn v-btn-digit">7</div><div class="v-btn v-btn-digit">8</div>
-                            <div class="v-btn v-btn-digit">4</div><div class="v-btn v-btn-digit">5</div>
-                            <div class="v-btn v-btn-digit">1</div><div class="v-btn v-btn-digit">2</div>
-                            <div class="v-btn v-btn-digit">0</div><div class="v-btn v-btn-digit">.</div>
-                        </div>
-                        <div class="vector-right-wing">
-                            <div class="v-btn v-btn-blue v-btn-percent">%</div>
-                            <button class="integrated-trigger-btn" id="btn-toggle-calc" onclick="toggleCalculator()">Рассчитать перенос розеток</button>
-                        </div>
-                    </div>
-                </div>
-            <!-- Правая сторона: Заголовок на самом верху, а рамка с картинкой опускается ниже -->
-            <div class="calc-photo-vector-wrapper">
-                <!-- 🎯 ТЕПЕРЬ НАДПИСЬ СТРОГО НАД РАМКОЙ -->
-                <h3 class="calc-vector-outer-title">Перенос розеток</h3>
-                
-                <!-- Сама рамка, которая опустится вниз к линии калькулятора -->
-                <div class="calc-photo-vector">
-                    <img src="assets/images/calkulator_smeta.png" alt="Профессиональный перенос розеток в Минске" class="calc-vector-img">
-                </div>
-            </div>
-
-
-            </div>
-
-
-            <!-- 🛠️ СКРЫТЫЙ ИНТЕРАКТИВНЫЙ БЛОК КАЛЬКУЛЯТОРА -->
-            <div class="calculator-section">
-                <div class="calc-interactive-box">
-                    
-                    <div class="calc-inputs-side">
-                        <h3 class="interactive-title">Параметры для расчета переноса:</h3>
-                        
-                        <div class="calc-group">
-                            <label>Материал стен вашей квартиры:</label>
-
-                            
-                            <div class="radio-group">
-                                <label class="radio-label">
-                                    <input type="radio" name="wall-material" value="concrete" checked onchange="calculateKitchen()">
-                                    <span>Бетон (панельный дом)</span>
-                                </label>
-                                <label class="radio-label">
-                                    <input type="radio" name="wall-material" value="brick" onchange="calculateKitchen()">
-                                    <span>Кирпич / Блоки</span>
-                                </label>
-
-
-
-                            </div>
-                        </div>
-
-                        <div class="calc-group">
-                            <div class="range-header">
-                                <label>Количество новых розеток/точек:</label>
-                                <span id="sockets-val">6 шт.</span>
-                            </div>
-                            <input type="range" id="sockets-range" min="1" max="25" value="6" oninput="calculateKitchen()">
-                        </div>
-
-                        <div class="calc-group">
-                            <div class="range-header">
-                                <label>Примерная длина штробы (метров):</label>
-                                <span id="strobe-val">5 м.</span>
-                            </div>
-                            <input type="range" id="strobe-range" min="1" max="30" value="5" oninput="calculateKitchen()">
-                        </div>
-                    </div>
-
-                    <div class="calc-results-side">
-                        <h3 class="results-title">Предварительная смета работы:</h3>
-                        
-                        <div class="calc-result-rows-container">
-                            <div class="result-item">
-                                <span class="item-name">Монтаж подрозетников:</span> 
-                                <strong class="item-price" id="res-boxes">0 BYN</strong>
-                            </div>
-                            <div class="result-item">
-                                <span class="item-name">Штробление стен под кабель:</span> 
-                                <strong class="item-price" id="res-strobe">0 BYN</strong>
-                            </div>
-                            <div class="result-item">
-                                <span class="item-name">Прокладка силового кабеля:</span> 
-                                <strong class="item-price" id="res-cable">0 BYN</strong>
-                            </div>
-                        </div>
-                        
-                        <div class="result-total-block">
-                            <span class="total-label">Итого за работу мастера:</span>
-                            <strong class="total-price-value" id="calc-total-val">0 BYN</strong>
-                        </div>
-                        
-                        <div class="calc-msg-box" style="display: none;">
-                            <textarea id="calc-text-msg" readonly></textarea>
-                        </div>
-                        
-                        <button class="btn btn-calc-send" id="btn-copy-send" onclick="copyAndOpenTelegram()">📋 Скопировать смету и открыть Telegram</button>
-                        <p class="calc-warning-note">⚠️ Внимание: Данный расчет включает только стоимость РАБОТЫ мастера. Строительные материалы закупаются отдельно.</p>
-                    </div>
-
-                </div>
-            </div>
-
-        </div> <!-- Закрытие главного тега container -->
-
+   
 
 
 
