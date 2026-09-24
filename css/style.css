@@ -1,0 +1,2042 @@
+/* ==========================================================================
+   1. СБРОС СТИЛЕЙ И БАЗОВЫЕ НАСТРОЙКИ (СВЕТЛАЯ ТЕМА)
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f8fafc;
+    color: #334155;
+}
+
+body {
+    line-height: 1.6;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+span {
+    color: #0066cc;
+}
+
+/* ==========================================================================
+   2. КНОПКИ
+   ========================================================================== */
+.btn {
+    display: inline-block;
+    padding: 14px 28px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-main {
+    background-color: #0066cc;
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(0, 102, 204, 0.2);
+}
+
+.btn-main:hover {
+    background-color: #0052a3;
+    transform: translateY(-2px);
+}
+
+.btn-card {
+    background-color: #ffffff;
+    color: #0066cc;
+    width: 100%;
+    border: 1px solid #cbd5e1;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 8px;
+    margin-top: auto;
+}
+
+.btn-card:hover {
+    background-color: #f0f7ff;
+    border-color: #0066cc;
+}
+
+/* ==========================================================================
+   3. ШАПКА САЙТА (Header)
+   ========================================================================== */
+.header {
+    background-color: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 800;
+    color: #0f172a;
+    letter-spacing: 0.5px;
+}
+
+.header-contacts {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+}
+
+.phone-link {
+    color: #0f172a;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.phone-link:hover {
+    color: #0066cc;
+}
+
+.work-time {
+    font-size: 12px;
+    color: #64748b;
+}
+
+/* ==========================================================================
+   4. ГЛАВНЫЙ БАННЕР-СЛАЙДЕР (ЖЕСТКАЯ АБСОЛЮТНАЯ СИНЯЯ ЛИНИЯ И КРУПНЫЙ ШРИФТ)
+   ========================================================================== */
+.hero-slider-section {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #e0f2fe 0%, #f8fafc 100%); 
+}
+
+
+
+/* Контейнер для картинок мастера — фон теперь просвечивает сквозь PNG! */
+.hero-images-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none; /* Чтобы картинки не мешали кликать по кнопкам */
+}
+
+/* 🖼️ Новая логика под PNG: фото центрируется и не растягивается во всю ширину */
+.master-photo-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* 🌟 ИЗМЕНЕНИЯ ДЛЯ ЦЕНТРИРОВАНИЯ PNG: */
+    background-size: contain;     /* Картинка аккуратно вписывается по высоте (600px) */
+    background-position: center;   /* Встает строго по центру экрана, как ты нарисовал маркером */
+    background-repeat: no-repeat;
+    
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1.2s ease-in-out, visibility 1.2s ease-in-out;
+}
+
+/* Когда слайд с фото становится активным, силуэт плавно проявляется */
+.master-photo-slide.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+
+.hero-slider-container {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    z-index: 2;
+}
+
+/* Белая карточка с острыми правыми углами под линию */
+.hero-card {
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.98); 
+    max-width: 580px;
+    width: 100%;
+    height: 480px; /* Увеличили высоту, чтобы тексту было просторно */
+    border-radius: 24px 0px 0px 24px; 
+    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 40px;
+    /* Резервируем место справа строго под толщину синей линии, чтобы она не перекрывала текст */
+    padding-right: 52px; 
+}
+
+/* 🟦 ЖЕСТКАЯ АБСОЛЮТНАЯ СИНЯЯ ЛИНИЯ СПРАВА — СТОИТ НАМЕРТВО И НЕ ИСЧЕЗАЕТ */
+.hero-card-line {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 12px; /* Толщина в 2 раза больше исходной */
+    height: 100%;
+    background-color: #0066cc;
+    z-index: 10;
+}
+
+.hero-card-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Окно обрезки анимации выезда */
+.text-slider-window {
+    width: 100%;
+    overflow: hidden;
+    flex-grow: 1;
+}
+
+.text-slider-track {
+    display: flex;
+    width: 400%;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); 
+}
+
+.text-slide {
+    width: 25%;
+    height: 100%;
+    flex-shrink: 0;
+    padding-right: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.slide-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: bold;
+    color: #0066cc;
+    background-color: #f0f7ff;
+    padding: 6px 14px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    align-self: flex-start;
+}
+
+/* Возвращены полноценные крупные и жирные шрифты заголовков */
+.text-slide h2 {
+    font-size: 38px;
+    line-height: 1.2;
+    color: #0f172a; /* Красивый глубокий темный цвет для основной фразы */
+    margin-bottom: 15px;
+    font-weight: 800;
+}
+
+/* Настройка для выделенного слова внутри заголовка */
+.text-slide h2 span {
+    color: #0066cc; /* Наш фирменный ярко-синий цвет! */
+}
+
+
+.text-slide p {
+    font-size: 16px;
+    color: #475569;
+    line-height: 1.5;
+}
+
+.slider-controls-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.slider-navigation {
+    display: flex;
+    gap: 10px;
+}
+
+.nav-arrow {
+    width: 46px;
+    height: 46px;
+    background-color: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    border-radius: 50%;
+    color: #0066cc;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.nav-arrow:hover {
+    background-color: #0066cc;
+    color: #ffffff;
+    border-color: #0066cc;
+}
+/* Индикаторы-точки под баннером */
+.slider-dots-container {
+    position: absolute;
+    bottom: 25px;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.slider-dots {
+    display: flex;
+    gap: 8px;
+    padding-left: 40px;
+}
+
+.dot {
+    width: 24px;
+    height: 6px;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    width: 40px;
+    background-color: #ffffff;
+}
+
+/* ==========================================================================
+   5. БЛОК УСЛУГ (Плитка цен)
+   ========================================================================== */
+.services-section {
+    padding: 80px 0;
+    background-color: #ffffff;
+}
+
+.section-title {
+    font-size: 32px;
+    color: #0f172a;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.min-order {
+    text-align: center;
+    color: #0066cc;
+    font-weight: bold;
+    margin-bottom: 40px;
+    font-size: 16px;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+    align-items: start;
+}
+
+.service-card {
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 25px;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    background-color: #ffffff;
+    box-shadow: 0 15px 30px rgba(0, 102, 204, 0.06);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.card-icon {
+    font-size: 26px;
+    background-color: #ffffff;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+}
+
+.service-card h3 {
+    font-size: 20px;
+    color: #0f172a;
+}
+
+.card-desc {
+    color: #64748b;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+/* Раскрывыющиеся прайсы */
+.price-list-hidden {
+    display: block;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, opacity 0.3s ease-out, margin-top 0.4s ease-out;
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 1px solid transparent;
+}
+
+.price-list-hidden.active {
+    max-height: 600px;
+    opacity: 1;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.price-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    padding: 9px 0;
+    border-bottom: 1px dashed #e2e8f0;
+}
+
+.price-item:last-child {
+    border-bottom: none;
+}
+
+.price-item span {
+    color: #334155;
+}
+
+.price-item b {
+    color: #0f172a;
+    white-space: nowrap;
+}
+
+.card-electric .card-icon,
+.card-plumbing .card-icon,
+.card-furniture .card-icon,
+.card-handyman .card-icon {
+    background-color: #f0f7ff;
+    color: #0066cc;
+    border-color: #bfdbfe;
+}
+
+.card-electric:hover { border-color: #0066cc; }
+.card-plumbing:hover { border-color: #38bdf8; }
+.card-furniture:hover { border-color: #0284c7; }
+.card-handyman:hover { border-color: #0ea5e9; }
+
+.price-item span::before {
+    content: "•";
+    display: inline-block;
+    margin-right: 8px;
+    font-weight: bold;
+    font-size: 16px;
+    color: #0066cc;
+}
+
+/* ==========================================================================
+   6. УНИВЕРСАЛЬНЫЙ КАЛЬКУЛЯТОР РОЗЕТОК (ИСПРАВЛЕННЫЙ И ВЫДЕЛЕННЫЙ)
+   ========================================================================== */
+.calc-preview-row {
+    display: flex;
+    gap: 30px;
+    align-items: stretch;
+    margin: 40px 0 45px 0;
+    width: 100%;
+}
+
+.calc-device-vector {
+    flex: 0.65;
+    background-color: #ffffff;
+    border: 3px solid #0066cc;
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    box-shadow: 0 10px 30px rgba(0, 102, 204, 0.04);
+}
+
+.vector-screen {
+    background-color: #cfd8dc; 
+    border: 2px solid #94a3b8;
+    border-radius: 8px;
+    height: 54px;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; 
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.vector-screen-digits {
+    font-family: "Courier New", Courier, monospace; 
+    font-size: 24px;
+    font-weight: bold;
+    color: #1e293b;
+    letter-spacing: 1px;
+}
+
+.vector-main-body-layout {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+}
+
+.vector-buttons-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 8px;
+}
+
+.vector-right-wing {
+    flex: 1.1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.v-btn {
+    height: 32px; 
+    background-color: #e2e8f0; 
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 800;
+    color: #334155;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    box-shadow: 0 2px 0 #cbd5e1;
+}
+
+.v-btn-digit {
+    background-color: #ffffff;
+    border-color: #e2e8f0;
+    font-size: 14px; 
+    color: #0f172a;
+    box-shadow: 0 2px 0 #e2e8f0;
+}
+
+.v-btn-orange {
+    background-color: #ff9800;
+    border-color: #f57c00;
+    color: #ffffff;
+    box-shadow: 0 2px 0 #f57c00;
+}
+
+.v-btn-blue {
+    background-color: #e0f2fe;
+    border-color: #bae6fd;
+    color: #0066cc;
+    box-shadow: 0 2px 0 #bae6fd;
+}
+
+.v-btn-percent {
+    width: 100%;
+}
+
+.integrated-trigger-btn {
+    flex: 1;
+    width: 100%;
+    background-color: #e0f2fe; 
+    border: 2px solid #bae6fd;
+    border-radius: 12px;
+    color: #0066cc; 
+    font-size: 14px; 
+    font-weight: 800;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 15px 10px;
+    cursor: pointer;
+    box-shadow: 0 3px 0 #bae6fd, 0 5px 15px rgba(0, 102, 204, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.integrated-trigger-btn:hover {
+    background-color: #bae6fd;
+    border-color: #7dd3fc;
+}
+
+.calc-photo-vector {
+    flex: 1.35;
+    border: 3px solid #0066cc;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 102, 204, 0.04);
+    height: 290px;
+}
+
+.calc-photo-vector img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Выдвижная интерактивная панель калькулятора */
+.calculator-section {
+    display: block;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease-out;
+    padding: 0;
+    width: 100%;
+}
+
+.calculator-section.active {
+    max-height: 1200px;
+    opacity: 1;
+    padding: 20px 0 40px 0;
+}
+
+.calc-interactive-box {
+    display: flex;
+    gap: 40px;
+    background-color: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 24px;
+    padding: 35px;
+    box-shadow: 0 15px 40px rgba(15, 23, 42, 0.05);
+    width: 100%;
+    align-items: stretch;
+}
+
+.calc-inputs-side {
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.interactive-title { 
+    font-size: 22px; 
+    color: #0f172a; 
+    font-weight: 800; 
+    margin-bottom: 5px; 
+}
+
+.calc-group label { 
+    font-size: 15px; 
+    color: #334155; 
+    font-weight: 700; 
+    margin-bottom: 8px; 
+    display: block;
+}
+
+.radio-group { display: flex; gap: 12px; }
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #f8fafc;
+    border: 1px solid #cbd5e1;
+    padding: 14px 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    flex: 1;
+    color: #0f172a;
+    font-weight: 700;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+/* 🎯 КОСЯК 1: Возвращаем стандартное отображение точки радиокнопки для Бетона */
+.radio-label input { 
+    accent-color: #0066cc !important; 
+    cursor: pointer; 
+    transform: scale(1.2); 
+    display: inline-block !important;
+}
+.radio-label:hover { border-color: #0066cc; background-color: #f0f7ff; }
+
+.range-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+.range-header span {
+    font-size: 14px; font-weight: bold; background-color: #f1f5f9;
+    color: #0066cc; padding: 5px 12px; border-radius: 8px; border: 1px solid #cbd5e1;
+}
+
+/* 🎯 КОСЯК 2: ЖЕСТКО ПЕРЕКРАШИВАЕМ ДОРОЖКИ ПОЛЗУНКОВ В СВЕТЛО-ГОЛУБОЙ ЦВЕТ */
+.calc-group input[type="range"] { 
+    width: 100%; 
+    accent-color: #0066cc; /* Синий кружок */
+    cursor: pointer; 
+    height: 8px; 
+    background-color: #e0f2fe !important; /* Светло-голубая заполненная полоска */
+    border: 1px solid #bae6fd;
+    border-radius: 10px;
+}
+
+/* 📟 ПРАВАЯ СТОРОНА: СМЕТА РАСТЯНУТАЯ НА ВСЮ ШИРИНУ ПЛАШКИ */
+.calc-results-side {
+    flex: 1.4; 
+    background-color: #f0f7ff; 
+    border: 2px solid #bfdbfe;
+    border-radius: 20px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: inset 0 2px 8px rgba(0, 102, 204, 0.02);
+}
+
+.results-title {
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #0066cc; 
+    margin-bottom: 25px;
+    border-bottom: 2px dashed #bfdbfe; 
+    padding-bottom: 12px;
+    font-weight: 800;
+}
+
+.calc-result-rows-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+.result-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff; 
+    padding: 14px 20px;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.01);
+}
+
+.item-name {
+    font-size: 16px; 
+    font-weight: 700;
+    color: #1e293b;
+}
+
+.item-price {
+    font-size: 17px; 
+    color: #0066cc; 
+    font-weight: 800;
+}
+
+/* 🎯 КОСЯК 3: МОЩНЫЙ, ЖИРНЫЙ, СИНКОВЫЙ БЛОК ДЛЯ СУММЫ К ОПЛАТЕ «ИТОГО» */
+.result-total-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto; /* Прижимает блок кнопок и цен к низу */
+    background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%) !important; /* Синий сочный градиент */
+    padding: 18px 24px !important;
+    border-radius: 14px !important;
+    width: 100% !important;
+    box-shadow: 0 5px 15px rgba(0, 102, 204, 0.2) !important;
+    margin-bottom: 20px;
+    display: flex !important; /* Гарантируем видимость */
+}
+
+.total-label {
+    font-size: 18px !important;
+    font-weight: 800 !important;
+    color: #ffffff !important; /* Белые крупные буквы */
+}
+
+.total-price-value {
+    font-size: 32px !important; /* Огромный, убойный ценник */
+    color: #ffffff !important; /* Белый цвет суммы */
+    font-weight: 900 !important;
+}
+
+.btn-calc-send {
+    background-color: #0088cc;
+    color: #ffffff;
+    width: 100%;
+    padding: 15px;
+    font-size: 16px; 
+    font-weight: 800;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 136, 206, 0.25);
+    transition: all 0.2s ease;
+}
+
+.btn-calc-send:hover {
+    background-color: #0077b3;
+    transform: translateY(-1px);
+}
+
+.calc-warning-note {
+    font-size: 12px;
+    color: #64748b;
+    margin-top: 15px;
+    text-align: center;
+    line-height: 1.5;
+    width: 100%;
+}
+
+@media (max-width: 992px) {
+    .calc-preview-row { flex-direction: column; gap: 20px; }
+    .calc-device-vector, .calc-photo-vector { width: 100%; flex: none; }
+    .calc-photo-vector { height: 260px; }
+    .calc-interactive-box { flex-direction: column; gap: 30px; padding: 25px 20px; }
+}
+
+@media (max-width: 768px) { .radio-group { flex-direction: column; gap: 8px; } }
+
+/* ==========================================================================
+   7. ПОДВАЛ И КОНТАКТЫ (Одинаковые кнопки связи)
+   ========================================================================== */
+.contacts-section {
+    background-color: #ffffff;
+    padding: 60px 0 40px 0;
+    border-top: 1px solid #e2e8f0;
+    text-align: center;
+}
+
+.contacts-section h2 {
+    font-size: 30px;
+    color: #0f172a;
+    margin-bottom: 15px;
+}
+
+.contacts-subtitle {
+    color: #475569;
+    font-size: 16px;
+    margin-bottom: 35px;
+}
+
+.footer-buttons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+.footer-buttons-container .soc-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 54px;
+    width: 230px;
+    padding: 0 15px;
+    border-radius: 50px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    border: none;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+}
+
+.footer-buttons-container .soc-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(15, 23, 42, 0.1);
+}
+
+.phone-btn { background-color: #27ae60; }
+.viber { background-color: #7b519d; }
+.telegram { background-color: #0088cc; }
+.instagram { background-color: #e1306c; }
+
+.footer-bottom {
+    border-top: 1px solid #e2e8f0;
+    padding-top: 20px;
+    font-size: 12px;
+    color: #94a3b8;
+}
+
+/* Калькулятор скрыт при старте */
+.calculator-section {
+    display: block;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out, opacity 0.4s ease-out, padding 0.5s ease-out;
+    padding: 0;
+}
+
+.calculator-section.active {
+    max-height: 1500px;
+    opacity: 1;
+    padding: 60px 0;
+}
+
+/* ==========================================================================
+   8. МЕДИА-ЗАПРОСЫ (АДАПТИВНОСТЬ)
+   ========================================================================== */
+@media (max-width: 992px) {
+    .hero-slider-section {
+        height: auto;
+    }
+
+    .hero-bg-image {
+        position: relative;
+        width: 100%;
+        height: 280px;
+        border-radius: 20px;
+        margin: 20px auto 0 auto;
+        max-width: calc(100% - 20px);
+    }
+
+    .hero-slider-container {
+        flex-direction: column;
+        padding: 20px 10px;
+        height: auto;
+    }
+
+    .hero-card {
+        max-width: 100%;
+        height: auto;
+        box-shadow: none;
+        background-color: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 20px;
+        padding: 30px 20px;
+        padding-right: 20px; /* Сбрасываем жесткий отступ на мобилке */
+    }
+
+    .hero-card-line {
+        width: 100%;
+        height: 6px;
+        top: auto;
+        bottom: 0;
+        border-radius: 0 0 20px 20px;
+    }
+
+    .text-slider-window {
+        height: auto;
+    }
+
+    .text-slide {
+        padding-right: 0;
+        text-align: center;
+    }
+
+    .text-slide h2 {
+        font-size: 26px;
+    }
+
+    .slider-controls-row {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .slider-controls-row .btn-main {
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .slider-dots-container {
+        position: relative;
+        bottom: 0;
+        margin-top: 20px;
+    }
+
+    .slider-dots {
+        justify-content: center;
+        padding-left: 0;
+    }
+
+    .dot {
+        background-color: #cbd5e1;
+    }
+
+    .dot.active {
+        background-color: #0066cc;
+    }
+}
+
+@media (max-width: 768px) {
+    .calc-wrapper {
+        flex-direction: column;
+        padding: 20px;
+    }
+    .radio-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    .header-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .header-contacts {
+        text-align: center;
+    }
+    .section-title {
+        font-size: 26px;
+    }
+    .footer-buttons-container {
+        flex-direction: column;
+    }
+    .footer-buttons-container .soc-btn {
+        width: 100%;
+        max-width: 340px;
+    }
+}
+
+
+
+/* ==========================================================================
+   НОВЫЙ ТРЕНДОВЫЙ СТИЛЬ КАРТОЧЕК ПОД ФЛЭТ-ИЛЛЮСТРАЦИИ С СИНИМИ ПЯТНАМИ
+   ========================================================================== */
+
+/* Перестраиваем шапку карточки, чтобы картинка стояла сверху по центру, а не вбок */
+.service-card .card-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+/* Увеличиваем размер квадратной подложки под картинку иллюстрации */
+.service-card .card-icon {
+    width: 220px; /* 👈 Увеличили ширину (была 130px) */
+    height: 220px; /* 👈 Увеличили высоту (была 130px) */
+    background-color: #f8fafc; 
+    border: 1px solid #f1f5f9;
+    border-radius: 20px; /* Сделали скругления чуть мягче под крупный размер */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px; /* Добавили сочный внутренний отступ */
+    transition: transform 0.2s ease-in-out;
+    margin: 0 auto;
+}
+
+
+/* Интерактивный эффект: при наведении на карточку картинка мягко увеличивается */
+.service-card:hover .card-icon {
+    transform: scale(1.04);
+}
+
+/* Стили заголовка услуги внутри карточки */
+.service-card .card-header h3 {
+    font-size: 24px;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0;
+}
+
+/* Выравниваем текст описания по центру, чтобы всё смотрелось симметрично */
+.service-card .card-desc {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #475569;
+}
+
+
+
+/* ==========================================================================
+   📋 3.2 ЭФФЕКТ ЖИВОЙ КАПСУЛЫ: МОНОЛИТНОЕ ПЕРЕЛИВАНИЕ РАМКИ ПО СХЕМЕ
+   ========================================================================== */
+
+/* Жестко держим размер картинок 220px по твоему стандарту */
+.card-illustration {
+    width: 220px !important; 
+    height: 220px !important;
+    background-color: #f8fafc; 
+    border: 1px solid #f1f5f9;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    transition: transform 0.2s ease-in-out;
+    margin: 0 auto 20px auto;
+}
+
+.card-illustration img {
+    max-width: 100% !important;
+    max-height: 100% !important;
+    object-fit: contain !important;
+}
+
+/* Центровка текстов карточек */
+.service-card .card-header,
+.service-card .card-header-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
+    margin-bottom: 15px !important;
+}
+
+.service-card h3 {
+    font-size: 24px !important;
+    font-weight: 800 !important;
+    color: #0f172a !important;
+    text-align: center !important;
+    margin: 0 auto 10px auto !important;
+    display: block !important;
+    width: 100% !important;
+}
+
+.service-card .card-desc {
+    text-align: center !important;
+    margin-bottom: 25px !important;
+    font-size: 15px !important;
+    line-height: 1.5 !important;
+    color: #475569 !important;
+}
+
+/* 🌟 ГЛАВНАЯ ОБЩАЯ ПАНЕЛЬ ПРАЙСА: Скругляем все углы, синяя жирная рамка */
+.wide-price-panel {
+    display: none;
+    width: 100%;
+    background-color: #ffffff;
+    border: 3px solid #0066cc; /* Наш сочный синий контур */
+    border-radius: 24px; 
+    padding: 30px;
+    margin-top: 30px; /* Делаем аккуратный зазор для закрытого состояния */
+    margin-bottom: 40px;
+    box-shadow: 0 20px 40px rgba(0, 102, 204, 0.06);
+    position: relative;
+    z-index: 10;
+}
+
+.wide-price-panel.active {
+    display: block;
+    animation: slideDownFade 0.3s ease-out;
+}
+
+/* 🌟 ЭФФЕКТ ПЕРЕЛИВАНИЯ И ОБЪЕДИНЕНИЯ РАМОК В ОДИН СТИЛЬ */
+.service-card.panel-open {
+    border-color: #0066cc !important; /* Карточка красится в тот же синий цвет */
+    border-width: 3px !important; /* Толщина рамки совпадает с прайсом */
+    box-shadow: 0 10px 30px rgba(0, 102, 204, 0.08) !important;
+    position: relative;
+    z-index: 15;
+}
+
+/* Фоновый сдвиг общей панели при активации для склейки контуров */
+.wide-price-panel.active {
+    margin-top: 25px;
+}
+
+/* Кнопка на активной карточке горит синим */
+.service-card.panel-open .btn-card {
+    background-color: #0066cc;
+    color: #ffffff;
+    border-color: #0066cc;
+}
+
+/* Шапка выезжающего прайса */
+.price-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px dashed #bfdbfe; 
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+}
+
+#price-panel-title {
+    font-size: 20px;
+    font-weight: 800;
+    color: #0f172a;
+}
+
+.btn-close-panel {
+    background-color: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    color: #64748b;
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-close-panel:hover {
+    background-color: #ffeded;
+    color: #dc2626;
+    border-color: #fca5a5;
+}
+
+.price-content-block { display: none; }
+.price-content-block.active { display: block; }
+.wide-price-list { display: flex; flex-direction: column; gap: 12px; }
+
+/* Элементы прайса */
+.wide-price-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8fafc; 
+    padding: 12px 20px;
+    border-radius: 14px;
+    border: 1px solid #e2e8f0;
+    transition: all 0.2s ease;
+}
+
+.wide-price-item:hover {
+    background-color: #f0f7ff; 
+    border-color: #bfdbfe;
+}
+
+.price-item-left { display: flex; align-items: center; gap: 15px; }
+
+.price-item-thumb {
+    width: 44px;
+    height: 44px;
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    flex-shrink: 0;
+}
+
+.price-item-thumb img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.price-item-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.price-item-val {
+    font-size: 16px;
+    font-weight: 800;
+    color: #0066cc; 
+    white-space: nowrap;
+    background-color: #ffffff;
+    padding: 6px 12px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+@keyframes slideDownFade {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+
+/* ==========================================================================
+   🎯 КАРТИНКА ШУРУПОВЕРТА СПРАВА ОТ КАРТОЧЕК (ПРОСТАЯ И СТАТИЧНАЯ)
+   ========================================================================== */
+/* Обязательно проверяем, чтобы у родительского контейнера .services-section или .container была позиция relative */
+.services-section .container {
+    position: relative;
+}
+
+/* Позиционируем коробку с картинкой в пустое поле справа */
+.static-drill-box {
+    position: absolute;
+    right: -320px; /* 👈 Двигай влево-вправо: делай минус меньше (например -50px), чтобы прижать к карточкам, или больше (-150px), чтобы отодвинуть к краю */
+    top: 420px;    /* 👈 Двигай выше-ниже: увеличивай цифру, чтобы опустить, или уменьшай, чтобы поднять картинку */
+    width: 300px;  /* 👈 Твой масштаб: делай больше или меньше по вкусу */
+    height: auto;
+    z-index: 5;
+    pointer-events: none; /* Мышка будет проходить сквозь нее, ничего не зависнет */
+    user-select: none;
+}
+
+.static-drill-img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(-10px 12px 25px rgba(0, 0, 0, 0.06)); /* Легкая аккуратная тень для объема */
+}
+
+/* На мобильных телефонах и планшетах полностью скрываем, чтобы она не наползала на текст карточек */
+@media (max-width: 1400px) {
+    .static-drill-box {
+        display: none !important;
+    }
+}
+
+
+/* ==========================================================================
+   🔥 ИНТЕРАКТИВНАЯ АНИМАЦИЯ ШУРУПОВЕРТА (ДЫХАНИЕ + СВЕРЛЕНИЕ ПРИ НАВЕДЕНИИ)
+   ========================================================================== */
+
+/* Включаем pointer-events, чтобы мышка могла взаимодействовать с картинкой */
+.static-drill-box {
+    pointer-events: auto !important; 
+}
+
+.static-drill-img {
+    transform-origin: bottom center;
+    /* 🎯 ФАЗА 1: Плавное покачивание инструмента в руке по умолчанию (цикл 4 секунды) */
+    animation: smoothDrillBreathing 4s infinite ease-in-out;
+    transition: filter 0.3s ease;
+    cursor: pointer;
+}
+
+/* 🎯 ФАЗА 2: При наведении курсора запускается быстрая микро-вибрация сверления */
+.static-drill-box:hover .static-drill-img {
+    animation: interactiveDrillVibe 0.14s infinite linear;
+    filter: drop-shadow(-12px 18px 30px rgba(0, 102, 204, 0.18)); /* Добавляем легкий синий акцент при пуске */
+}
+
+/* Анимация плавного покачивания (дыхания) */
+@keyframes smoothDrillBreathing {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-6px) rotate(1.5deg); }
+}
+
+/* Анимация жесткой микро-вибрации (работает строго при ховере в пределах своих пикселей) */
+@keyframes interactiveDrillVibe {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(-0.5px, 0.5px) rotate(-0.3deg); }
+    50% { transform: translate(0.5px, -0.5px) rotate(0.3deg); }
+    75% { transform: translate(-0.5px, -0.5px) rotate(-0.2deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+
+/* ==========================================================================
+   💥 ИНТЕРАКТИВНЫЙ СКЛАДНОЙ МЕТР СЛЕВА (ФИКСАЦИЯ ТВОИХ КООРДИНАТ И ЭФФЕКТ ПРУЖИНЫ)
+   ========================================================================== */
+.static-meter-box {
+    position: absolute;
+    left: -220px !important;   /* 🎯 Твоя идеальная координата влево */
+    top: -30px !important;      /* 🎯 Твоя идеальная координата высоты */
+    width: 240px !important;   /* 🎯 Твой идеальный масштаб ширины */
+    height: auto;
+    z-index: 5;
+    pointer-events: auto !important; /* Включили мышку, чтобы ховер срабатывал! */
+    user-select: none;
+}
+
+.static-meter-img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(10px 12px 25px rgba(0, 0, 0, 0.06));
+    
+    /* Точка вращения: привязываем анимацию к верхнему краю, чтобы линейка качалась как подвешенная */
+    transform-origin: top center;
+    
+    /* ФАЗА 1: Мягкое живое покачивание инструмента в режиме ожидания (цикл 5 секунд) */
+    animation: smoothMeterSwing 5s infinite ease-in-out;
+    transition: filter 0.3s ease;
+    cursor: pointer;
+}
+
+/* ФАЗА 2: При наведении мышки запускается эффект пружинящего щелчка замера */
+.static-meter-box:hover .static-meter-img {
+    animation: interactiveMeterSnap 0.4s ease-in-out;
+    filter: drop-shadow(15px 18px 30px rgba(0, 102, 204, 0.12)); /* Мягкий синий контур при замере */
+}
+
+/* Анимация ленивого покачивания подвешенного складного метра */
+@keyframes smoothMeterSwing {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(2deg) translateY(-3px); }
+}
+
+/* Анимация "измерительного щелчка" (быстрый пружинящий отскок при наведении курсора) */
+@keyframes interactiveMeterSnap {
+    0% { transform: scale(1) rotate(0deg); }
+    30% { transform: scaleY(1.08) scaleX(0.95) translateY(5px); } /* Метр пружинит вниз и вытягивается */
+    60% { transform: scaleY(0.95) scaleX(1.03) translateY(-3px); } /* Отскакивает обратно */
+    80% { transform: scaleY(1.02) scaleX(0.98) translateY(1px); }  /* Мелкое затухание */
+    100% { transform: scale(1) rotate(0deg); }
+}
+
+/* На мобильных телефонах полностью убираем, чтобы не мешал контенту */
+@media (max-width: 1400px) {
+    .static-meter-box {
+        display: none !important;
+    }
+}
+
+/* ==========================================================================
+   💥 ЗЕРКАЛЬНЫЕ КЛЕЩИ GEDORE (ФИКСАЦИЯ ГУБОК СПРАВА И ВРАЩЕНИЕ РУКОЯТКИ СЛЕВА)
+   ========================================================================== */
+.static-pliers-box {
+    position: absolute;
+    left: -280px !important;   /* Твоя настроенная координата влево */
+    top: 800px !important;     /* Твоя настроенная координата высоты */
+    width: 360px !important;   /* Твой настроенный масштаб ширины */
+    height: auto;
+    z-index: 5;
+    pointer-events: auto !important; 
+    user-select: none;
+}
+
+.static-pliers-img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(10px 12px 25px rgba(0, 0, 0, 0.08));
+    
+    /* 🎯 ЗЕРКАЛЬНАЯ ФИКСАЦИЯ: Переносим точку вращения в верхний правый угол (на губки клещей),
+       чтобы сами пассатижи справа стояли на месте гайки, а рука слева крутила рукоятку */
+    transform-origin: top right;
+    
+    /* ФАЗА 1: Мягкое покачивание (дыхание) в режиме ожидания */
+    animation: smoothPliersBreath 4s infinite ease-in-out;
+    transition: filter 0.3s ease;
+    cursor: pointer;
+}
+
+/* ФАЗА 2: УЛЬТРА-ЗАМЕДЛЕННОЕ И РАЗМАШИСТОЕ ЗЕРКАЛЬНОЕ КРУЧЕНИЕ */
+.static-pliers-box:hover .static-pliers-img {
+    animation: interactivePliersRotateWorkMirrored 2.2s infinite ease-in-out !important;
+    filter: drop-shadow(12px 16px 30px rgba(0, 102, 204, 0.14));
+}
+
+/* Анимация ленивого покачивания */
+@keyframes smoothPliersBreath {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-3px) rotate(-0.5deg); }
+}
+
+/* 🔥 ИДЕАЛЬНОЕ ЗЕРКАЛЬНОЕ КРУЧЕНИЕ: Губки справа стоят как влитые, 
+   А левая часть с рукой мастера плавно и размашисто ходит по дуге на 25 градусов */
+@keyframes interactivePliersRotateWorkMirrored {
+    0% { transform: rotate(0deg); }
+    50% { transform: rotate(25deg); } /* 👈 Левая сторона с рукой уходит по сочной траектории, имитируя затяжку */
+    100% { transform: rotate(0deg); }
+}
+
+/* На мобильных телефонах полностью убираем */
+@media (max-width: 1400px) {
+    .static-pliers-box {
+        display: none !important;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   🧱 МОДНЫЙ ПЛИТОЧНЫЙ ПРАЙС-ЛИСТ С МАКСИМАЛЬНЫМ 3D-ВЫЛЕТОМ КАРТИНКИ
+   ========================================================================== */
+.price-grid-layout {
+    display: grid !important;
+    grid-template-columns: repeat(6, 1fr) !important;
+    gap: 20px !important;
+    width: 100% !important;
+    margin-top: 15px !important;
+}
+
+/* Общий стиль карточки-плитки */
+.price-tile-card {
+    grid-column: span 2 !important;
+    background-color: #f8fafc !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 18px !important;
+    padding: 25px 20px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    justify-content: space-between !important;
+    transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) !important; /* Упругая анимация вылета */
+}
+
+/* Верхний ряд */
+.price-tile-card.active-top-row {
+    grid-column: span 3 !important;
+    background-color: #ffffff !important;
+    border: 2px solid #e2e8f0 !important;
+}
+
+/* Эффект для всей карточки при наведении мышки */
+.price-tile-card:hover {
+    transform: translateY(-6px) !important; 
+    border-color: #bfdbfe !important;
+    box-shadow: 0 15px 30px rgba(0, 102, 204, 0.06) !important;
+    background-color: #ffffff !important;
+}
+
+/* Контейнер картинки-стикера */
+.tile-premium-bg-sticker {
+    width: 115px !important;
+    height: 115px !important;
+    min-width: 115px !important;
+    min-height: 115px !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    margin: 0 auto 15px auto !important;
+    display: block !important;
+    filter: drop-shadow(0 8px 16px rgba(0, 102, 204, 0.06)) !important;
+    
+    /* Добавляем плавность для изменения размера и положения самой картинки */
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) !important; 
+}
+
+/* 🎯 МАКСИМАЛЬНЫЙ СУПЕР-ВЫЛЕТ КАРТИНКИ: Увеличили масштаб до 1.65 + приподняли вверх */
+.price-tile-card:hover .tile-premium-bg-sticker {
+    transform: scale(1.65) translateY(-12px) !important; /* Наглый размашистый вылет вперед и вверх! */
+    filter: drop-shadow(0 20px 35px rgba(0, 102, 204, 0.22)) !important; /* Глубокая, сочная 3D-тень */
+}
+
+/* Пути к картинкам */
+.tile-img-socket { background-image: url('../images/thumb-socket.png') !important; }
+.tile-img-chandelier { background-image: url('../images/thumb-chandelier.png') !important; }
+.tile-img-diagnostic { background-image: url('../images/thumb-diagnostic.png') !important; }
+.tile-img-breaker { background-image: url('../images/thumb-breaker.png') !important; }
+.tile-img-hob { background-image: url('../images/thumb-hob.png') !important; }
+.tile-img-panel-build { background-image: url('../images/thumb-panel-build.png') !important; }
+.tile-img-switches { background-image: url('../images/thumb-switches.png') !important; }
+.tile-img-led-strip { background-image: url('../images/thumb-led-strip.png') !important; }
+
+
+
+.tile-img-mixer { background-image: url('../images/thumb-mixer.png') !important; }
+.tile-img-siphon { background-image: url('../images/thumb-siphon.png') !important; }
+.tile-img-silicone { background-image: url('../images/thumb-silicone.png') !important; }
+.tile-img-clog { background-image: url('../images/thumb-clog.png') !important; }
+.tile-img-toilet { background-image: url('../images/thumb-toilet.png') !important; }
+.tile-img-washer { background-image: url('../images/thumb-washer.png') !important; }
+.tile-img-filter { background-image: url('../images/thumb-filter.png') !important; }
+.tile-img-wc-replace { background-image: url('../images/thumb-wc-replace.png') !important; }
+
+
+
+.tile-img-table { background-image: url('../images/thumb-table.png') !important; }
+.tile-img-dresser { background-image: url('../images/thumb-dresser.png') !important; }
+.tile-img-bed { background-image: url('../images/thumb-bed.png') !important; }
+.tile-img-wardrobe { background-image: url('../images/thumb-wardrobe.png') !important; }
+.tile-img-hinge { background-image: url('../images/thumb-hinge.png') !important; }
+.tile-img-disassemble { background-image: url('../images/thumb-disassemble.png') !important; }
+.tile-img-kitchen-install { background-image: url('../images/thumb-kitchen-install.png') !important; }
+.tile-img-furniture-repair { background-image: url('../images/thumb-furniture-repair.png') !important; }
+
+
+.tile-img-lock { background-image: url('../images/thumb-lock.png') !important; }
+.tile-img-tv { background-image: url('../images/thumb-tv.png') !important; }
+.tile-img-cornice { background-image: url('../images/thumb-cornice.png') !important; }
+.tile-img-mirror { background-image: url('../images/thumb-mirror.png') !important; }
+.tile-img-dryer { background-image: url('../images/thumb-dryer.png') !important; }
+.tile-img-plinth { background-image: url('../images/thumb-plinth.png') !important; }
+.tile-img-small-hardware { background-image: url('../images/thumb-small-hardware.png') !important; }
+.tile-img-sports-mount { background-image: url('../images/thumb-sports-mount.png') !important; }
+
+
+
+/* Описание услуги по центру */
+.tile-info h4 {
+    font-size: 17px !important;
+    font-weight: 800 !important;
+    color: #0f172a !important;
+    margin-bottom: 8px !important;
+    line-height: 1.3 !important;
+}
+
+.tile-info p {
+    font-size: 13.5px !important;
+    line-height: 1.45 !important;
+    color: #64748b !important;
+    margin-bottom: 20px !important;
+}
+
+/* Красивая жирная кнопка-ценник */
+.tile-price-tag {
+    font-size: 15px !important;
+    font-weight: 800 !important;
+    color: #0066cc !important;
+    background-color: #f0f7ff !important;
+    border: 1px solid #bfdbfe !important;
+    padding: 8px 24px !important;
+    border-radius: 50px !important;
+    white-space: nowrap !important;
+    width: 100% !important;
+    max-width: 140px !important;
+    text-align: center;
+}
+
+.price-tile-card:hover .tile-price-tag {
+    background-color: #0066cc !important;
+    color: #ffffff !important;
+    border-color: #0066cc !important;
+}
+
+/* Адаптивность для телефонов */
+@media (max-width: 900px) {
+    .price-grid-layout {
+        grid-template-columns: 1fr !important;
+    }
+    .price-tile-card, .price-tile-card.active-top-row {
+        grid-column: span 1 !important;
+    }
+}
+
+
+
+
+
+
+
+/* ==========================================================================
+   💥 ПАРЯЩИЕ НАКЛЕЙКИ-МЕССЕНДЖЕРЫ В ПОДВАЛЕ САЙТА (ВМЕСТО СТАРЫХ КНОПОК)
+   ========================================================================== */
+.footer-stickers-container {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 30px !important; /* Удобное расстояние между наклейками */
+    margin: 40px auto !important;
+    flex-wrap: wrap !important;
+    width: 100% !important;
+    max-width: 600px !important;
+}
+
+/* Общий стиль для ссылки-наклейки */
+.footer-sticker-btn {
+    display: block !important;
+    text-decoration: none !important;
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) !important; /* Упругий вылет */
+}
+
+/* Базовый размер самого стикера */
+.sticker-media {
+    width: 100px !important;  /* Идеальный квадратный размер в подвале */
+    height: 100px !important;
+    min-width: 100px !important;
+    min-height: 100px !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    display: block !important;
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.08)) !important; /* Легкая тень на старте */
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+/* 🎯 ИНТЕРАКТИВНЫЙ ХОВЕР: При наведении мышки наклейка мощно взлетает вверх и вперед! */
+.footer-sticker-btn:hover {
+    transform: scale(1.3) translateY(-12px) !important; /* Взлет на 30% и уход вверх */
+}
+
+.footer-sticker-btn:hover .sticker-media {
+    filter: drop-shadow(0 20px 35px rgba(0, 102, 204, 0.22)) !important; /* Глубокая 3D-тень */
+}
+
+/* 🎯 ПУТИ К ИМЕНАМ ФАЙЛОВ ТВОИХ НОВЫХ НАКЛЕЕК */
+.sticker-btn-phone { background-image: url('../images/sticker-phone.png') !important; }
+.sticker-btn-viber { background-image: url('../images/sticker-viber.png') !important; }
+.sticker-btn-telegram { background-image: url('../images/sticker-telegram.png') !important; }
+.sticker-btn-instagram { background-image: url('../images/sticker-instagram.png') !important; }
+
+/* Сброс старых классов кнопок, чтобы они не конфликтовали */
+.soc-btn, .phone-btn, .viber, .telegram, .instagram {
+    display: none-adjusted; /* Защита */
+}
+
+
+
+
+/* ==========================================================================
+   📐 БРОНЕБОЙНАЯ ПЕРЕСТРОЙКА ИНФО-ПАНЕЛИ (ШАГИ ПО ВЕРТИКАЛИ ДРУГ ЗА ДРУГОМ)
+   ========================================================================== */
+.tile-info-dropdown {
+    display: none !important;
+    grid-column: 1 / -1 !important; /* Растягиваем на всю ширину сетки сайта */
+    width: 100% !important;
+    background: #ffffff !important; 
+    border: 2px solid #0066cc !important; 
+    border-radius: 24px !important;
+    padding: 40px !important;       /* Больше солидного пространства */
+    margin-top: 25px !important;
+    position: relative !important;
+    box-sizing: border-box !important;
+    box-shadow: 0 15px 35px rgba(0, 102, 204, 0.06) !important;
+    animation: slideDownFade 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+}
+
+.tile-info-dropdown.active-info {
+    display: block !important;
+}
+
+/* 🎯 ГЛАВНОЕ ИСПРАВЛЕНИЕ: Заставляем Зону 1, Зону 2 и Зону 3 идти строго друг за другом сверху вниз! */
+.dropdown-content-wrapper {
+    display: flex !important;
+    flex-direction: column !important; /* Выстраиваем главные блоки в столбик */
+    gap: 35px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* 🎯 ЗОНА 1: Горизонтальный ряд для трех шагов (Как на твоем референсе!) */
+.horizontal-infographic-row {
+    display: flex !important;
+    flex-direction: row !important;      /* Шаги стоят строго слева направо! */
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    gap: 30px !important;
+    width: 100% !important;
+    position: relative !important;
+    box-sizing: border-box !important;
+    /* СИНЯЯ ЛИНИЯ СВЯЗИ: Лежит ровно по центру горизонтально позади цифр */
+    background: linear-gradient(to right, transparent 15%, #0066cc 15%, #0066cc 85%, transparent 85%) no-repeat center 150px / 100% 2px !important;
+    margin-bottom: 10px !important;
+}
+
+/* Карточка отдельного шага внутри ряда */
+.info-step-card {
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    min-width: 200px !important;
+    box-sizing: border-box !important;
+}
+
+/* Масштаб картинок-стикеров */
+.step-sticker-icon {
+    width: 120px !important;
+    height: 120px !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    margin: 0 auto 15px auto !important;
+    filter: drop-shadow(0 8px 15px rgba(0, 102, 204, 0.05)) !important;
+}
+
+/* Круглый синий номерок */
+.step-number-badge {
+    width: 34px !important;
+    height: 34px !important;
+    background: #0066cc !important;
+    color: #ffffff !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-weight: 900 !important;
+    font-size: 16px !important;
+    margin: 0 auto 15px auto !important;
+    box-shadow: 0 4px 10px rgba(0, 102, 204, 0.3) !important;
+    z-index: 2 !important;
+}
+
+/* Детали текста шагов */
+.step-details h4 {
+    font-size: 17px !important;
+    font-weight: 800 !important;
+    color: #0f172a !important;
+    margin: 0 0 10px 0 !important;
+}
+
+.step-details p {
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+    color: #475569 !important;
+    margin: 0 !important;
+}
+
+/* Главный заголовок инфографики сверху */
+.infographic-main-title {
+    font-size: 24px !important;
+    font-weight: 900 !important;
+    color: #0f172a !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    text-align: center !important;
+    margin: 0 0 30px 0 !important;
+    width: 100% !important;
+}
+
+/* Крестик закрытия */
+.dropdown-close-btn {
+    position: absolute !important;
+    top: 15px !important;
+    right: 20px !important;
+    font-size: 28px !important;
+    color: #94a3b8 !important;
+    cursor: pointer !important;
+    z-index: 10 !important;
+}
+.dropdown-close-btn:hover { color: #ef4444 !important; }
+
+/* 📱 Адаптивность для мобилок: на телефонах плавно собираем шаги вертикально */
+@media (max-width: 900px) {
+    .horizontal-infographic-row {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 35px !important;
+        background: none !important; /* Убираем линию на узких экранах */
+    }
+    .info-step-card {
+        width: 100% !important;
+    }
+    .tile-info-dropdown {
+        padding: 25px 20px !important;
+    }
+}
+
+
+
+/* электрика */
+
+/* Иконки для индивидуальных шагов сборки электрощита */
+.tile-img-panel-design { background-image: url('../images/thumb-panel-design.png') !important; }
+.tile-img-panel-din { background-image: url('../images/thumb-panel-din.png') !important; }
+.tile-img-panel-wire { background-image: url('../images/thumb-panel-wire.png') !important; }
+
+/* Иконки для индивидуальных шагов подключения варочной панели */
+.tile-img-hob-audit { background-image: url('../images/thumb-hob-audit.png') !important; }
+.tile-img-hob-socket { background-image: url('../images/thumb-hob-socket.png') !important; }
+.tile-img-hob-phase { background-image: url('../images/thumb-hob-phase.png') !important; }
+
+/* Иконки для индивидуальных шагов переноса и ремонта розеток */
+.tile-img-socket-drill { background-image: url('../images/thumb-socket-drill.png') !important; }
+.tile-img-socket-calc { background-image: url('../images/thumb-socket-calc.png') !important; }
+.tile-img-socket-final { background-image: url('../images/thumb-socket-final.png') !important; }
+
+/* Иконки для индивидуальных шагов монтажа люстр и светильников */
+.tile-img-light-frame { background-image: url('../images/thumb-light-frame.png') !important; }
+.tile-img-light-mount { background-image: url('../images/thumb-light-mount.png') !important; }
+.tile-img-light-wire { background-image: url('../images/thumb-light-wire.png') !important; }
+
+/* Иконки для индивидуальных шагов диагностики проводки */
+.tile-img-diag-short { background-image: url('../images/thumb-diag-short.png') !important; }
+.tile-img-diag-breaker { background-image: url('../images/thumb-diag-breaker.png') !important; }
+.tile-img-diag-repair { background-image: url('../images/thumb-diag-repair.png') !important; }
+
+/* Иконки для индивидуальных шагов замены автоматических выключателей */
+.tile-img-breaker-old { background-image: url('../images/thumb-breaker-old.png') !important; }
+.tile-img-breaker-din { background-image: url('../images/thumb-breaker-din.png') !important; }
+.tile-img-breaker-screw { background-image: url('../images/thumb-breaker-screw.png') !important; }
+
+/* Иконки для индивидуальных шагов монтажа выключателей и диммеров */
+.tile-img-switch-wire { background-image: url('../images/thumb-switch-wire.png') !important; }
+.tile-img-switch-level { background-image: url('../images/thumb-switch-level.png') !important; }
+.tile-img-switch-final { background-image: url('../images/thumb-switch-final.png') !important; }
+
+/* Иконки для индивидуальных шагов монтажа светодиодной ленты */
+.tile-img-led-profile { background-image: url('../images/thumb-led-profile.png') !important; }
+.tile-img-led-solder { background-image: url('../images/thumb-led-solder.png') !important; }
+.tile-img-led-power { background-image: url('../images/thumb-led-power.png') !important; }
+
+
+
+
+/* сантехника */
+
+/* Иконки для индивидуальных шагов амены фильтров */
+.tile-img-shutoff { background-image: url('../images/thumb-shutoff.png') !important; }
+.tile-img-filter-change { background-image: url('../images/thumb-filter-change.png') !important; }
+.tile-img-filter-launch { background-image: url('../images/thumb-filter-launch.png') !important; }
+
+/* Иконки для индивидуальных шагов смесителя */
+.tile-img-mixer-demolish { background-image: url('../images/thumb-mixer-demolish.png') !important; }
+.tile-img-eccentric-align { background-image: url('../images/thumb-eccentric-align.png') !important; }
+.tile-img-mixer-final { background-image: url('../images/thumb-mixer-final.png') !important; }
+
+/* Иконки для индивидуальных шагов сифона */
+.tile-img-siphon-remove { background-image: url('../images/thumb-siphon-remove.png') !important; }
+.tile-img-siphon-assemble { background-image: url('../images/thumb-siphon-assemble.png') !important; }
+.tile-img-siphon-final { background-image: url('../images/thumb-siphon-final.png') !important; }
+
+/* Иконки для индивидуальных шагов герметизации */
+.tile-img-silicone-remove { background-image: url('../images/thumb-silicone-remove.png') !important; }
+.tile-img-silicone-apply { background-image: url('../images/thumb-silicone-apply.png') !important; }
+.tile-img-silicone-final { background-image: url('../images/thumb-silicone-final.png') !important; }
+
+/* Иконки для индивидуальных шагов устранения засоров */
+.tile-img-clog-inspect { background-image: url('../images/thumb-clog-inspect.png') !important; }
+.tile-img-clog-snake { background-image: url('../images/thumb-clog-snake.png') !important; }
+.tile-img-clog-flush { background-image: url('../images/thumb-clog-flush.png') !important; }
+
+/* Иконки для индивидуальных шагов ремонта бачка унитаза */
+.tile-img-toilet-disassemble { background-image: url('../images/thumb-toilet-disassemble.png') !important; }
+.tile-img-toilet-replace { background-image: url('../images/thumb-toilet-replace.png') !important; }
+.tile-img-toilet-adjust { background-image: url('../images/thumb-toilet-adjust.png') !important; }
+
+/* Иконки для индивидуальных шагов подключения техники */
+.tile-img-washer-unpack { background-image: url('../images/thumb-washer-unpack.png') !important; }
+.tile-img-washer-connect { background-image: url('../images/thumb-washer-connect.png') !important; }
+.tile-img-washer-level { background-image: url('../images/thumb-washer-level.png') !important; }
+
+/* Иконки для индивидуальных шагов установки унитаза */
+.tile-img-wc-demolish { background-image: url('../images/thumb-wc-demolish.png') !important; }
+.tile-img-wc-drill { background-image: url('../images/thumb-wc-drill.png') !important; }
+.tile-img-wc-seal { background-image: url('../images/thumb-wc-seal.png') !important; }
+
+
+
+
+/* сборка мебели*/
+
+/* Иконки для индивидуальных шагов сборки шкафа-купе */
+.tile-img-wardrobe-frame { background-image: url('../images/thumb-wardrobe-frame.png') !important; }
+.tile-img-wardrobe-track { background-image: url('../images/thumb-wardrobe-track.png') !important; }
+.tile-img-wardrobe-door { background-image: url('../images/thumb-wardrobe-door.png') !important; }
+
+/* Иконки для индивидуальных шагов сборки кухни */
+.tile-img-kitchen-base { background-image: url('../images/thumb-kitchen-base.png') !important; }
+.tile-img-kitchen-cut { background-image: url('../images/thumb-kitchen-cut.png') !important; }
+.tile-img-kitchen-top { background-image: url('../images/thumb-kitchen-top.png') !important; }
+
+/* Иконки для индивидуальных шагов сборки столов и стульев */
+.tile-img-table-legs { background-image: url('../images/thumb-table-legs.png') !important; }
+.tile-img-table-top { background-image: url('../images/thumb-table-top.png') !important; }
+.tile-img-table-glides { background-image: url('../images/thumb-table-glides.png') !important; }
+
+/* Иконки для индивидуальных шагов сборки комодов и прихожих */
+.tile-img-dresser-frame { background-image: url('../images/thumb-dresser-frame.png') !important; }
+.tile-img-dresser-rail { background-image: url('../images/thumb-dresser-rail.png') !important; }
+.tile-img-dresser-drawer { background-image: url('../images/thumb-dresser-drawer.png') !important; }
+
+/* Иконки для индивидуальных шагов сборки кроватей */
+.tile-img-bed-frame { background-image: url('../images/thumb-bed-frame.png') !important; }
+.tile-img-bed-slats { background-image: url('../images/thumb-bed-slats.png') !important; }
+.tile-img-bed-final { background-image: url('../images/thumb-bed-final.png') !important; }
+
+/* Иконки для индивидуальных шагов ремонта мебели и замены фурнитуры */
+.tile-img-repair-hinge { background-image: url('../images/thumb-repair-hinge.png') !important; }
+.tile-img-repair-brace { background-image: url('../images/thumb-repair-brace.png') !important; }
+.tile-img-repair-align { background-image: url('../images/thumb-repair-align.png') !important; }
+
+/* Иконки для индивидуальных шагов регулировки мебельных фасадов */
+.tile-img-facade-screw { background-image: url('../images/thumb-facade-screw.png') !important; }
+.tile-img-facade-laser { background-image: url('../images/thumb-facade-laser.png') !important; }
+.tile-img-facade-final { background-image: url('../images/thumb-facade-final.png') !important; }
+
+/* Иконки для индивидуальных шагов почасовой сборки мебели */
+.tile-img-hourly-check { background-image: url('../images/thumb-hourly-check.png') !important; }
+.tile-img-hourly-work { background-image: url('../images/thumb-hourly-work.png') !important; }
+.tile-img-hourly-time { background-image: url('../images/thumb-hourly-time.png') !important; }
+
+
+
+
+
+/* мелкий ремонт */
+
+/* Иконки для индивидуальных шагов замены дверного замка */
+.tile-img-lock-old { background-image: url('../images/thumb-lock-old.png') !important; }
+.tile-img-lock-fit { background-image: url('../images/thumb-lock-fit.png') !important; }
+.tile-img-lock-final { background-image: url('../images/thumb-lock-final.png') !important; }
+
+/* Иконки для индивидуальных шагов монтажа кронштейна и навески ТВ */
+.tile-img-tv-drill { background-image: url('../images/thumb-tv-drill.png') !important; }
+.tile-img-tv-mount { background-image: url('../images/thumb-tv-mount.png') !important; }
+.tile-img-tv-final { background-image: url('../images/thumb-tv-final.png') !important; }
+
+/* Иконки для индивидуальных шагов монтажа карнизов */
+.tile-img-curtain-laser { background-image: url('../images/thumb-curtain-laser.png') !important; }
+.tile-img-curtain-drill { background-image: url('../images/thumb-curtain-drill.png') !important; }
+.tile-img-curtain-final { background-image: url('../images/thumb-curtain-final.png') !important; }
+
+/* Иконки для индивидуальных шагов навески зеркал и картин */
+.tile-img-mirror-laser { background-image: url('../images/thumb-mirror-laser.png') !important; }
+.tile-img-mirror-drill { background-image: url('../images/thumb-mirror-drill.png') !important; }
+.tile-img-mirror-final { background-image: url('../images/thumb-mirror-final.png') !important; }
+
+/* Иконки для индивидуальных шагов монтажа сушилки на балконе */
+.tile-img-dryer-drill { background-image: url('../images/thumb-dryer-drill.png') !important; }
+.tile-img-dryer-roller { background-image: url('../images/thumb-dryer-roller.png') !important; }
+.tile-img-dryer-final { background-image: url('../images/thumb-dryer-final.png') !important; }
+
+/* Иконки для individual шагов монтажа напольного плинтуса */
+.tile-img-skirting-cut { background-image: url('../images/thumb-skirting-cut.png') !important; }
+.tile-img-skirting-drill { background-image: url('../images/thumb-skirting-drill.png') !important; }
+.tile-img-skirting-final { background-image: url('../images/thumb-skirting-final.png') !important; }
+
+/* Иконки для индивидуальных шагов монтажа турников и спорткомплексов */
+.tile-img-sports-laser { background-image: url('../images/thumb-sports-laser.png') !important; }
+.tile-img-sports-drill { background-image: url('../images/thumb-sports-drill.png') !important; }
+.tile-img-sports-final { background-image: url('../images/thumb-sports-final.png') !important; }
+
+/* Иконки для индивидуальных шагов установки приборов и аксессуаров */
+.tile-img-access-laser { background-image: url('../images/thumb-access-laser.png') !important; }
+.tile-img-access-drill { background-image: url('../images/thumb-access-drill.png') !important; }
+.tile-img-access-final { background-image: url('../images/thumb-access-final.png') !important; }
+
+
+
+
+
+/* Делаем всю карточку кликабельной */
+.price-tile-card {
+    cursor: pointer !important;
+}
